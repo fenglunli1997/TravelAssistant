@@ -1,0 +1,17 @@
+<!--pages/personal/history/history.wxml-->
+<!-- <text>pages/personal/history/history.wxml</text> -->
+<view class='bar'>
+  <view class='barItem' bindtap='choose' data-id='0' style='color:{{color[0]}};border-bottom: {{border[0]}}px solid blue;'>全部</view>
+  <view class='barItem' bindtap='choose' data-id='1' style='color:{{color[1]}};border-bottom: {{border[1]}}px solid blue;'>出行</view>
+  <view class='barItem' bindtap='choose' data-id='2' style='color:{{color[2]}};border-bottom: {{border[2]}}px solid blue;'>美食</view>
+  <view class='barItem' bindtap='choose' data-id='3' style='color:{{color[3]}};border-bottom: {{border[3]}}px solid blue;'>住宿</view>
+</view>
+
+<block wx:for="{{arrays}}">
+  <view class='item'>
+    <text class='time'>{{item.time}}</text>
+    <text class='journey'>{{item.fr}} - {{item.to}}</text>
+    <text class='type'>{{item.type}}</text>
+    <text class='price'>￥{{item.price}}</text>
+  </view>
+</block>

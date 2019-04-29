@@ -1,0 +1,100 @@
+/* pages/hotel/reserve/reserve.wxss */
+.ad{
+  height: 180px;
+}
+.introduce{
+  margin-top: 5px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.name{
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.count{
+  display: flex;
+  flex-direction: row;
+  font-size: 10px;
+  color: #999999;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.locate{
+  align-self: center;
+  max-width: 20px;
+  max-height: 20px;
+  margin-right: 5px;
+}
+.location{
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 12px;
+}
+.phone{
+  position: absolute;
+  align-self: center;
+  right: 20px;
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.pick{
+  margin-top: 5px;
+  /* margin-left: 10px; */
+  border-top: 1px solid gray;
+  display: flex;
+  flex-direction: row;
+}
+.day{
+  width: 40%;
+}
+.array{
+  position: absolute;
+  align-self: center;
+  right: 10px;
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.item{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  border: 1px solid lightgray;
+}
+.name{
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.picture{
+  max-width: 25%;
+  max-height: 50px;
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  align-self: center;
+}
+.price{
+  font-size: 12px;
+  color: red;
+}
+
+button{
+  max-height: 25px;
+  max-width: 80px;
+  font-size: 10px;
+  color: white;
+  background-color: orangered;
+}
+.surplus{
+  text-align: center;
+  color: red;
+  font-size: 8px;
+}

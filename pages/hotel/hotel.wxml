@@ -1,0 +1,30 @@
+<!--pages/Hotel/Hotel.wxml-->
+<!-- <text>pages/Hotel/Hotel.wxml</text> -->
+<view class='bar'>
+  <view class='barItem' bindtap='choose' data-id='0' style='color:{{color[0]}};border-bottom: {{border[0]}}px solid blue;'>酒店</view>
+  <view class='barItem' bindtap='choose' data-id='1' style='color:{{color[1]}};border-bottom: {{border[1]}}px solid blue;'>钟点房</view>
+  <view class='barItem' bindtap='choose' data-id='2' style='color:{{color[2]}};border-bottom: {{border[2]}}px solid blue;'>民宿</view>
+  <view class='barItem' bindtap='choose' data-id='3' style='color:{{color[3]}};border-bottom: {{border[3]}}px solid blue;'>青年旅社</view>
+</view>
+
+<block wx:for="{{arrays}}">
+  <view class='item' bindtap='goReserve'>
+    <image src='{{item.img}}' mode='aspectFit' class='picture'/>
+    <view>
+      <view class='name'>
+        {{item.name}}
+        <text style='position: relative;left: 20px;align-self: center' class='count'>全国连锁</text>
+      </view>
+      <view class='count'>
+        <view>星星星星</view>
+        <view style='position: relative;left: 40px'>14.2km</view>
+      </view>
+      <view class='count'>西湖/南宋御街</view>
+      <view class='count'>各种icon</view>
+    </view>
+    <view class='priceTag'>￥<text class='price'>{{item.price}}</text>起</view>
+    <image src='../../icon/小箭头.png' class='array'/>
+  </view>
+</block>
+
+<image src='../../icon/搜索.png' class='search' bindtap='search'/>

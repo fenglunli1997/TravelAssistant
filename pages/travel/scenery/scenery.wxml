@@ -1,0 +1,39 @@
+<!--pages/travel/scenery/scenery.wxml-->
+<!-- <text>pages/travel/scenery/scenery.wxml</text> -->
+<swiper indicator-dots autoplay>
+  <block>
+    <swiper-item><image src='../../../icon/住宿.png'/></swiper-item>
+    <swiper-item><image src='../../../icon/出行.png'/></swiper-item>
+  </block>
+</swiper>
+
+<view class='weather'>
+  <view class='place'>{{place}}</view>
+  <view class='tempereture'>{{weather}}{{tempereture}}℃</view>
+</view>
+
+<view style='border: 1px solid lightgray'>
+  <view style='border: 1px solid lightgray' bindtap='goDetails'>
+    <view class='diary_title'>精彩游记</view>
+    <image src='../../../img/travel/hz-xh1.jpg' mode='aspectFill' class='diary_picture'/>
+  </view>
+  <view bindtap='seeMore' style='display: flex; flex-direction: row;'>
+    <view class='diary_title'>查看更多</view>
+    <image src='../../../icon/小箭头.png' class='array'/>
+  </view>
+</view>
+
+<view class='title'>必去景点</view>
+<swiper next-margin="220px" style='height: 100px'>
+  <block wx:for="{{arrays}}">
+    <view class='item'>
+      <swiper-item>
+        <image src='{{item.img}}' mode='aspectFit' class='picture'/>
+        <view class='name'>{{item.name}}</view>
+      </swiper-item>
+    </view>
+  </block>
+</swiper>
+
+<view class='title'>注意事项</view>
+<view class='attention'>杭州多雨，记得带伞</view>

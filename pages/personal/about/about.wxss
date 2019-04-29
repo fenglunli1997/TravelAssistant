@@ -1,0 +1,19 @@
+/* pages/personal/about/about.wxss */
+image{
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  max-width: 30%;
+  max-height: 30%;
+}
+.title{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.count{
+  /* font-weight: bold; */
+  font-size: 12px;
+  margin-top: 10px;
+}

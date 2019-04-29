@@ -1,0 +1,71 @@
+/* pages/Hotel/Hotel.wxss */
+.bar{
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  border-bottom: 1px solid gray;
+}
+.barItem{
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  align-self: center;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom-width: medium;
+}
+.item{
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  border: 1px solid lightgray;
+}
+.name{
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.count{
+  display: flex;
+  flex-direction: row;
+  font-size: 10px;
+  color: #999999;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.picture{
+  max-width: 25%;
+  max-height: 50px;
+  float: left;
+  margin-left: 5px;
+  margin-right: 5px;
+  align-self: center;
+}
+.priceTag{
+  font-size: 12px;
+  color: red;
+  position: absolute;
+  right: 40px;
+  align-self: center;
+}
+.price{
+  font-size: 15px;
+}
+.array{
+  position: absolute;
+  align-self: center;
+  right: 10px;
+  max-width: 30px;
+  max-height: 30px;
+}
+
+.search{
+  position: absolute;
+  right:20px;
+  bottom: 20px;
+  max-width: 40px;
+  max-height: 40px;
+}

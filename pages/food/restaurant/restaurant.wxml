@@ -1,0 +1,51 @@
+<!--pages/food/restaurant/restaurant.wxml-->
+<!-- <text>pages/food/restaurant/restaurant.wxml</text> -->
+<image src='../../../img/travel/hz-xh1.jpg' mode='aspectFit' class='ad'/>
+<view class='introduce'>
+  <view>
+    <view class='name'>外婆家（湖滨银泰店）</view>
+    <view class='count'>
+      <view style='color: black'>星星星星4.5分</view>
+      <view style='margin-left: 20px'>61/人</view>
+    </view>
+    <view class='count'>营业中<text style='margin-left: 8px'>10:30-15:00,16:30-21:00</text></view>
+  </view>
+  <image src='../../../icon/电话.png' mode='aspectFit' class='phone'/>
+</view>
+<view class='introduce' style='margin-left: 5px'>
+  <image src='../../../icon/定位.png' mode='aspectFit' class='locate'/>
+  <view>
+    <view class='location'>{{location}}</view>
+    <view class='count'>{{route}}</view>
+  </view>
+</view>
+
+<view class='title'>
+  <view class='name'>推荐菜</view>
+  <view class='more'>查看更多</view>
+</view>
+<swiper next-margin="220px" style='height: 100px'>
+  <block wx:for="{{arrays}}">
+    <view class='item'>
+      <swiper-item>
+        <image src='{{item.img}}' mode='aspectFit' class='food'/>
+        <view class='food_name'>{{item.name}}</view>
+      </swiper-item>
+    </view>
+  </block>
+</swiper>
+
+<view class='title'>
+  <view class='name'>餐厅评价</view>
+  <view class='more'>更多评论</view>
+</view>
+<block wx:for='{{arrays_pingjia}}'>
+  <view class='pingjia_item'>
+    <image src='{{item.img}}' mode='aspectFit' class='pingjia_img'/>
+    <view style='align-self: center;'>
+      <view class='pingjia_name'>{{item.name}}<text class='pingjia_time'>2019-02-14</text></view>
+      <!-- <view class='pingjia_time'></view> -->
+      <view class='pingjia_info'>{{item.info}}</view>
+    </view>
+  </view>
+</block>

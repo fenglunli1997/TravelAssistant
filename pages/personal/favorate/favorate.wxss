@@ -1,0 +1,52 @@
+/* pages/personal/favorate/favorate.wxss */
+/* pages/personal/history/history.wxss */
+.bar{
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  border-bottom: 1px solid gray;
+}
+.barItem{
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  align-self: center;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom-width: medium;
+}
+
+.item{
+  margin-top: 18px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: row;
+}
+.img{
+  width: 20%;
+  max-height: 40px;
+  /* font-size: 15px; */
+  text-align: center;
+  align-self: center;
+}
+.journey{
+  width: 60%;
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  align-self: center;
+}
+.type{
+  color: gray;
+  font-size: 15px;
+  position: absolute;
+  right: 70px;
+  align-self: center;
+}
+.star{
+  max-height: 15px;
+  max-width: 15px;
+  position: absolute;
+  right: 10px;
+  align-self: center;
+}

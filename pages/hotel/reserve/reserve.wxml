@@ -1,0 +1,61 @@
+<!--pages/hotel/reserve/reserve.wxml-->
+<!-- <text>pages/hotel/reserve/reserve.wxml</text> -->
+<image src='../../../img/travel/hz-xh1.jpg' mode='aspectFit' class='ad'/>
+<view class='introduce'>
+  <view>
+    <view style='display:flex;flex-direction:row;'>
+      <view class='name'>如家酒店</view>
+      <view class='count' style='position: relative;left: 10px;align-self:center'>全国连锁</view>
+    </view>
+    <view class='count' style='display:flex;flex-direction:row;'>
+      <text style='color: black'>星星星星4.5分</text>
+      <text style='margin-left: 20px;'>西湖/南宋御街</text>
+    </view>
+  </view>
+  <image src='../../../icon/电话.png' mode='aspectFit' class='phone'/>
+</view>
+<view class='introduce' style='margin-left: 5px'>
+  <image src='../../../icon/定位.png' mode='aspectFit' class='locate'/>
+  <view>
+    <view class='location'>{{location}}</view>
+    <view class='count'>{{route}}</view>
+  </view>
+</view>
+
+<view class='pick' style='margin: 10px' bindtap='chooseTime'>
+  <view class='day'>
+    <view class='count'>今天入住</view>
+    <view style='display:flex;flex-direction:row;'>
+      <view>3月1号</view>
+      <text class='count' style='color: black; align-self: center; margin-left: 3px'>周五</text>
+    </view>
+  </view>
+  <view class='day'>
+    <view class='count'>明天离开</view>
+    <view style='display:flex;flex-direction:row;'>
+      <view>3月2号</view>
+      <text class='count' style='color: black; align-self: center; margin-left: 3px'>周六</text>
+    </view>
+  </view>
+  <view class='count' style='color: black; align-self: center;'>共1晚</view>
+  <image src='../../../icon/小箭头.png' mode='aspectFit' class='array'/>
+</view>
+
+<block wx:for="{{arrays}}">
+  <view class='item'>
+    <image src='{{item.img}}' mode='aspectFit' class='picture'/>
+    <view>
+      <view class='name'>{{item.name}}</view>
+      <view class='count'>
+        <view>不含早餐</view>
+        <view style='margin-left: 15px'>大床</view>
+        <view style='margin-left: 15px'>有窗</view>
+      </view>
+      <view class='price'>￥{{item.price}}</view>
+    </view>
+    <view style='align-self: center;position: absolute; right: 15px;'>
+      <button bindtap='goOrder'>预订</button>
+      <view class='surplus'>仅剩2间</view>
+    </view>
+  </view>
+</block>

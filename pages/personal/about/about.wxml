@@ -1,0 +1,11 @@
+<!--pages/personal/about/about.wxml-->
+<!-- <text>pages/personal/about/about.wxml</text> -->
+<image src='../../../icon/我 的.png' mode='aspectFit'/>
+<view style='text-align:center'>
+  <view class='title'>旅行先知</view>
+  <view class='count'>版本：v1.0</view>
+  <view class='count'>制作人：冯伦力</view>
+  <view class='count'>邮箱：hdu_fll@126.com</view>
+  <view class='count'>学号：15058208</view>
+  <view class='count'>学校：杭州电子科技大学</view>
+</view>

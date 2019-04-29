@@ -1,0 +1,22 @@
+<map latitude='{{markers[0].latitude}}' longitude='{{markers[0].longitude}}' style='display:flex;flex-direction:colum' scale='15' markers='{{markers}}' polyline='{{polyline}}' id='myMap' subkey="4INBZ-PRVRU-5WUVM-B5CDQ-FGXAS-DGBKA">
+
+  <!-- <cover-view class='bar'>
+    <cover-view class='barItem' bindtap='choose' data-id='0' style='color:{{color[0]}};border-bottom: {{border[0]}}px solid blue;'>步行</cover-view>
+    <cover-view class='barItem' bindtap='choose' data-id='1' style='color:{{color[1]}};border-bottom: {{border[1]}}px solid blue;'>骑行</cover-view>
+    <cover-view class='barItem' bindtap='choose' data-id='2' style='color:{{color[2]}};border-bottom: {{border[2]}}px solid blue;'>地铁</cover-view>
+    <cover-view class='barItem' bindtap='choose' data-id='3' style='color:{{color[3]}};border-bottom: {{border[3]}}px solid blue;'>公交车</cover-view>
+  </cover-view> -->
+
+  <cover-view class='co'>
+    <cover-view class='item' bindtap='locate' data-no='0'>
+      <cover-view class='count'>我的位置</cover-view>
+      <cover-view class='place'>{{name[0]}}</cover-view>
+    </cover-view>
+    <cover-view class='item' style='position:absolute;left:50%;' bindtap='locate' data-no='1'>
+      <cover-view class='count'>目的地</cover-view>
+      <cover-view class='place'>{{name[1]}}</cover-view>
+    </cover-view>
+  </cover-view>
+  
+  <cover-view><button class='route' bindtap='route'>查看路线</button></cover-view>
+</map>

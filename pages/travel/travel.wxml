@@ -1,0 +1,20 @@
+<!--pages/Travel/Travel.wxml-->
+<!-- <text>pages/Travel/Travel.wxml</text> -->
+<block wx:for="{{arrays}}">
+  <view class='item' bindtap='goSecenery'>
+    <image src='{{item.img}}' mode='aspectFit' class='picture'/>
+    <view>
+        <view class='name'>{{item.name}}</view>
+        <view class='count'>
+            <view>98%满意</view>
+            <view style='position: relative;left: 40px'>1.2万条点评</view>
+        </view>
+        <view class='count'>
+            <view>西湖区</view>
+            <view style='position: relative;left: 20px'>距离28.6km</view>
+        </view>
+        <view class='intro'>{{item.intro}}</view>
+    </view>
+    <image src='../../icon/小箭头.png' mode='aspectFit' class='array'/>
+  </view>
+</block>

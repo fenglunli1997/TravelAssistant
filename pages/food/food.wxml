@@ -1,0 +1,19 @@
+<!--pages/Food/Food.wxml-->
+<!-- <text>pages/Food/Food.wxml</text> -->
+<block wx:for="{{arrays}}">
+  <view class='item' bindtap='goRestaurant'>
+    <image src='{{item.img}}' mode='aspectFit' class='picture'/>
+    <view>
+        <view class='name'>{{item.name}}</view>
+        <view class='count'>
+            <view>星星星星</view>
+            <view style='position: relative;left: 40px'>￥61/人</view>
+            <view style='position: absolute;right:8px'>14.2km</view>
+        </view>
+        <view class='count'>
+            <view>西湖 | 杭帮菜</view>
+            <view style='position: relative;left: 20px'>家人聚餐</view>
+        </view>
+    </view>
+  </view>
+</block>

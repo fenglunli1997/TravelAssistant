@@ -1,0 +1,24 @@
+<!--pages/Personal/Personal.wxml-->
+<!-- <text>pages/Personal/Personal.wxml</text> -->
+<view style='border:1px solid lightgray;'>
+  <view style='display:flex; flex-direction:row; margin: 15px;'>
+    <image src='../../icon/我 的.png' mode='aspectFit' class='head'/>
+    <view>
+      <view class='name'>说走就走</view>
+      <view class='intro'>去过{{places}}个地方</view>
+    </view>
+  </view>
+</view>
+
+<view class='title' bindtap='goHistory'>
+  <text>查看历史订单</text>
+  <image src='../../icon/小箭头.png' mode='aspectFit' class='array'/>
+</view>
+<view class='title' bindtap='goFavorate'>
+  <text>我的收藏</text>
+  <image src='../../icon/小箭头.png' mode='aspectFit' class='array'/>
+</view>
+<view class='title' bindtap='goAbout'>
+  <text>关于旅行先知</text>
+  <image src='../../icon/小箭头.png' mode='aspectFit' class='array'/>
+</view>

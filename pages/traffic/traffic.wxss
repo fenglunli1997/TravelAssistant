@@ -1,0 +1,64 @@
+/* pages/Traffic/Traffic.wxss */
+page{
+  width: 100%;
+  height: 100%;
+}
+map{
+  width: 100%;
+  height: 100%;
+}
+.bar{
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  border-bottom: 1px solid gray;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.barItem{
+  width: 25%;
+  height: 100%;
+  text-align: center;
+  align-self: center;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom-width: medium;
+}
+.co{
+  width: 100%;
+  /* float: left; */
+  border-bottom: 1px solid gray;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.item{
+  height: 100%;
+  width: 50%;
+  float: left;
+  margin-right: 10px;
+}
+.count{
+  margin-left: 10px;
+  font-size: 10px;
+  color: gray;
+}
+.place{
+  margin-left: 10px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  white-space:pre-wrap;
+}
+.intro{
+  font-size: 12px;
+  margin: 10px;
+}
+.route{
+  /* position: absolute;
+  bottom: 0px; */
+  margin: 20px;
+  width: auto;
+  height: 40px;
+  text-align: center;
+  font-size: 12px;
+  background-color: rgba(255, 255, 255, 0.7);
+}

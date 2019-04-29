@@ -1,12 +1,74 @@
 {
-  "pages":[
+  "permission": {
+    "scope.userLocation": {
+      "desc": "请点击确定"
+    }
+  },
+  "plugins": {
+    "myPlugin": {
+      "version": "1.0.6",
+      "provider": "wx5bc2ac602a747594"
+    }
+  },
+  "pages": [
+    "pages/travel/travel",
+    "pages/traffic/traffic",
+    "pages/food/food",
+    "pages/hotel/hotel",
+    "pages/personal/personal",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/travel/scenery/scenery",
+    "pages/food/restaurant/restaurant",
+    "pages/travel/scenery/diary_main/diary_main",
+    "pages/travel/scenery/diary_list/diary_list",
+    "pages/hotel/reserve/reserve",
+    "pages/personal/history/history",
+    "pages/personal/favorate/favorate",
+    "pages/personal/about/about",
+    "pages/traffic/route/route"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "lightgray",
+    "selectedColor": "gray",
+    "backgroundColor": "white",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/travel/travel",
+        "text": "游景点",
+        "iconPath": "icon/景点.png",
+        "selectedIconPath": "icon/景点 (1).png"
+      },
+      {
+        "pagePath": "pages/traffic/traffic",
+        "text": "乘交通",
+        "iconPath": "icon/出行.png",
+        "selectedIconPath": "icon/出行 (1).png"
+      },
+      {
+        "pagePath": "pages/food/food",
+        "text": "尝美食",
+        "iconPath": "icon/美食.png",
+        "selectedIconPath": "icon/美食 (1).png"
+      },
+      {
+        "pagePath": "pages/hotel/hotel",
+        "text": "找住宿",
+        "iconPath": "icon/住宿.png",
+        "selectedIconPath": "icon/住宿 (1).png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "icon/我 的.png",
+        "selectedIconPath": "icon/我 的 (1).png"
+      }
+    ]
   }
 }

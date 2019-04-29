@@ -1,0 +1,4 @@
+<!--pages/travel/scenery/diary_main/diary_main.wxml-->
+<!-- <text>pages/travel/scenery/diary_main/diary_main.wxml</text> -->
+<image src='{{picture}}' mode='aspectFit' class='picture'/>
+<view class='main'>{{info}}</view>
