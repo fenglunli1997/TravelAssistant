@@ -1,0 +1,42 @@
+<view style='display: flex;flex-direction: row;margin-top: 10px;margin-left: 8px;'>
+  <view style='font-weight: bold;font-size: 20px;margin-top: 5px;margin-bottom: 5px;'>评论</view>
+</view>
+<view style='margin-bottom:30px;'>
+  <block wx:for='{{arrays_pingjia}}'>
+    <view style='display: flex;flex-direction: row;'>
+      <image src='{{item.img}}' mode='aspectFit' style='max-height: 50px;max-width: 50px;margin-top: 10px;margin-left: 10px;margin-right: 10px;'/>
+      
+      <view style='align-self: center;'>
+        <view style='font-weight: bold;font-size: 14px;'>
+          {{item.name}}
+          <view style='position: absolute;right: 12px;display:flex; flex-direction:row;' bindtap='commentLikeButton' data-comment_id='{{item.id}}'>
+            <image src='/icon/like{{item.likeState?"_red":""}}.png' style='position: absolute;right: 18px;width: 15px;height: 15px;align-self: center;'/>
+            <text style='font-size:10px; color:gray;'>{{item.likeSum}}</text>
+          </view>
+        </view>
+        <view style='margin-top: 5px;font-size: 10px;'>{{item.info}}</view>
+        <text style='font-size: 10px;color: lightgray;align-self: center;'>2019-02-14</text>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view style='background-color: white;position: fixed;bottom: 0px;width: 100%;'>
+  <view style='display: flex;flex-direction: row;line-height: 30px;'>
+
+    <view bindtap='commentButton' style='margin-left: 8px;margin-right: 8px;width: 75%;height: 30px;display: flex;flex-direction: row;align-self: center;'>
+      <image src='/icon/comment{{focus?"_blue":""}}.png' style='width: 18px;height: 18px;align-self: center;margin-right: 8px;'/>
+      <text style='font-size: 12px;color: lightgray;'>写评论...</text>
+    </view>
+
+    <view style='width: 10%;height: 30px;text-align: center;align-self: center;' bindtap='favButton'>
+      <image src='/icon/fav{{favState?"_golden":""}}.png' style='width: 18px;height: 18px;align-self: center;margin-right: 8px;'/>
+    </view>
+
+    <view style='width: 15%;height: 30px;margin-right: 8px;text-align: center;align-self: center;' bindtap='likeButton'>
+      <image src='/icon/like{{likeState?"_red":""}}.png' style='width: 18px;height: 18px; align-self:center; margin-right: 2px;'/>
+      <text style='font-size:10px; color:gray; align-self:center; text-align: center;'>{{likeSum}}</text>
+    </view>
+
+  </view>
+</view>

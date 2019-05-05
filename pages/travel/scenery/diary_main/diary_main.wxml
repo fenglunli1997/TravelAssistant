@@ -1,4 +1,4 @@
-<!--pages/travel/scenery/diary_main/diary_main.wxml-->
-<!-- <text>pages/travel/scenery/diary_main/diary_main.wxml</text> -->
-<image src='{{picture}}' mode='aspectFit' class='picture'/>
+<image src='{{picture}}' mode='aspectFit' style='width: 100%;'/>
+<view style='margin-left:15px;'><include src='/include/star.wxml' /></view>
 <view class='main'>{{info}}</view>
+<include src='/include/comment_list.wxml' />

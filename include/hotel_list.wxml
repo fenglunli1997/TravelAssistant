@@ -1,0 +1,22 @@
+<swiper-item>
+  <block wx:for="{{arrays}}">
+    <view class='item' bindtap='goReserve' wx:if="{{type==0||item.type==type}}">
+      <image src='{{item.img}}' mode='aspectFit' class='picture'/>
+      <view>
+        <view class='name'>
+          {{item.name}}
+          <text style='margin-left:20px; align-self: center' class='count'>{{title[item.type]}}</text>
+          <text style='margin-left:20px; align-self: center' class='count'>{{item.status}}</text>
+        </view>
+        <view class='count'>
+          <include src='/include/star_item.wxml' />
+          <view style='position: relative;left: 30px'>{{item.distance}}</view>
+        </view>
+        <view class='count'>{{item.street}}</view>
+        <view class='count'>{{item.icon}}</view>
+      </view>
+      <view class='priceTag'>￥<text class='price'>{{item.price}}</text>起</view>
+      <image src='/icon/array.png' class='array'/>
+    </view>
+  </block>
+</swiper-item>

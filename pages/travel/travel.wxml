@@ -1,20 +1,19 @@
-<!--pages/Travel/Travel.wxml-->
-<!-- <text>pages/Travel/Travel.wxml</text> -->
+<include src='/include/change_city.wxml' />
+
 <block wx:for="{{arrays}}">
-  <view class='item' bindtap='goSecenery'>
+  <view class='item' bindtap='goSecenery' data-name='{{item.name}}' data-id='{{item.id}}'>
     <image src='{{item.img}}' mode='aspectFit' class='picture'/>
     <view>
         <view class='name'>{{item.name}}</view>
+        <include src='/include/star_item.wxml' />
         <view class='count'>
-            <view>98%满意</view>
-            <view style='position: relative;left: 40px'>1.2万条点评</view>
-        </view>
-        <view class='count'>
-            <view>西湖区</view>
-            <view style='position: relative;left: 20px'>距离28.6km</view>
+            <view>{{item.town}}</view>
+            <view style='position: relative;left: 20px'>{{item.route}}</view>
         </view>
         <view class='intro'>{{item.intro}}</view>
     </view>
-    <image src='../../icon/小箭头.png' mode='aspectFit' class='array'/>
+    <view>
+    </view>
+    <image src='/icon/array.png' mode='aspectFit' class='array'/>
   </view>
 </block>

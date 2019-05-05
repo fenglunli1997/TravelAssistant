@@ -8,7 +8,7 @@
   margin-left: 15px;
   font-weight: bold;
 }
-.intro{
+.place{
   margin-top: 20px;
   margin-left: 15px;
   font-size: 12px;
@@ -17,7 +17,7 @@
 .title{
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 text{

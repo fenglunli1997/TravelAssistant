@@ -1,0 +1,10 @@
+<swiper-item>
+  <block wx:for="{{arrays}}">
+    <view class='item' wx:if="{{type==0||item.type==type&&arrays[item.id].check}}">
+      <image class='img' mode='aspectFit' src='{{item.img}}'/>
+      <text class='journey'>{{item.pl}} - {{item.name}}</text>
+      <text class='type'>{{title[item.type]}}</text>
+      <image class='star' mode='aspectFit' src='/icon/fav{{arrays[item.id].check==true?"_golden":""}}.png' bindtap='star' data-no='{{item.id}}'/>
+    </view>
+  </block>
+</swiper-item>

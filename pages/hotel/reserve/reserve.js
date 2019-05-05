@@ -6,15 +6,34 @@ Page({
    */
   data: {
     pageTitle: '如家酒店',
+    name: '如家酒店',
+    tag: '全国连锁',
+    score: 2.3,
+    street: '西湖/南宋御街',
     location: '上城区东坡路7号湖滨银泰in77B区B1层',
     route: '距地铁1号线龙翔桥站C2口10m',
     arrays: [],
+    favStatus: false,
 
+  },
+
+  favButton: function(){
+    this.setData({ favStatus : !this.data.favStatus });
+    if (this.data.favStatus)
+      wx.showToast({
+        title: '收藏成功！',
+      })
+  },
+
+  call: function(){
+    wx.makePhoneCall({
+      phoneNumber: '18100177098',
+    })
   },
 
   initData: function () {
     var arrays = [];
-    var src = '../../../img/travel/';
+    var src = '/img/travel/';
 
     var obj0 = new Object();
     obj0.img = src + 'hz-xh1.jpg';

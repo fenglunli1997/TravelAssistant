@@ -1,0 +1,8 @@
+<view style='display: flex;flex-direction: row;'>
+  <image src='/icon/fav{{item.score>0?(item.score>=1?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+  <image src='/icon/fav{{item.score>1?(item.score>=2?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+  <image src='/icon/fav{{item.score>2?(item.score>=3?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+  <image src='/icon/fav{{item.score>3?(item.score>=4?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+  <image src='/icon/fav{{item.score>4?(item.score>=5?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+  <view class='count' style='margin-left:2px;'>{{item.score}}分</view>
+</view>

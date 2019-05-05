@@ -8,14 +8,14 @@ Page({
     markers: [{
       latitude: 0,
       longitude: 0,
-      iconPath: "../../icon/定位.png",
+      iconPath: "/icon/locate.png",
       width: 30,
       height: 30,
       id: 0,
     },{
       latitude: 0,
       longitude: 0,
-      iconPath: "../../icon/定位.png",
+      iconPath: "/icon/locate.png",
       width: 30,
       height: 30,
       id: 1,
@@ -94,6 +94,15 @@ Page({
       },
     });
 
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function (options) {
+    wx.setNavigationBarTitle({
+      title: this.data.name[0],
+    })
   },
 
   // onShow: function () {

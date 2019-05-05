@@ -1,0 +1,19 @@
+<view class='row'>
+  <view>当前城市：</view>
+  <button disabled='{{true}}' class='button'>浙江省</button>
+  <button disabled='{{true}}' class='button'>{{now}}市</button>
+</view>
+
+<view class='row'>
+  <view>目标城市：</view>
+
+  <picker bindchange='changeProv' value='{{index}}' range='{{province}}' range-key='{{"prov"}}' mode='selector'>
+    <button class='button'>{{province[prov_selected].prov}}省</button>
+  </picker>
+
+  <picker bindchange='changeCity' value='{{index}}' range='{{province[prov_selected].city}}' mode='selector'>
+    <button class='button'>{{province[prov_selected].city[city_selected]}}市</button>
+  </picker>
+</view>
+
+<button bindtap='submit' type='primary' style='margin-top:15px;'>提交</button>

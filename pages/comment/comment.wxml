@@ -1,0 +1,17 @@
+<form bindsubmit='submit'>
+  <view class='item'>
+    分数：
+    <view>
+      <image src='/icon/fav{{star[0]?"_golden":""}}.png' bindtap='star' data-id='0' class='star'/>
+      <image src='/icon/fav{{star[1]?"_golden":""}}.png' bindtap='star' data-id='1' class='star'/>
+      <image src='/icon/fav{{star[2]?"_golden":""}}.png' bindtap='star' data-id='2' class='star'/>
+      <image src='/icon/fav{{star[3]?"_golden":""}}.png' bindtap='star' data-id='3' class='star'/>
+      <image src='/icon/fav{{star[4]?"_golden":""}}.png' bindtap='star' data-id='4' class='star'/>
+    </view>
+    {{score}}分
+  </view>
+
+  <view class='item'>内容评价：</view>
+  <view style='margin:10px;'><textarea class='input' name='input'></textarea></view>
+  <button form-type='submit' type='primary'>提交</button>
+</form>

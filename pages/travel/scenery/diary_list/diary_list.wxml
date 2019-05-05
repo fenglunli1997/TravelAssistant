@@ -1,14 +1,1 @@
-<!--pages/travel/scenery/diary_list/diary_list.wxml-->
-<!-- <text>pages/travel/scenery/diary_list/diary_list.wxml</text> -->
-<view style='border: 1px solid lightgray' bindtap='goDetails' style='width: 100%'>
-  <view style='border: 1px solid lightgray'>
-    <image src='../../../../img/travel/hz-xh1.jpg' mode='aspectFill' class='diary_picture'>
-      <view class='name'>{{name}}</view>
-    </image>
-    
-  </view>
-  <view style='display: flex; flex-direction: row;'>
-    <view class='diary_title'>查看详情</view>
-    <image src='../../../../icon/小箭头.png' class='array'/>
-  </view>
-</view>
+<include src='/include/diary.wxml' />

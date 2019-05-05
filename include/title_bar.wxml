@@ -1,0 +1,5 @@
+<view style='display: flex;flex-direction: row;height: 30px;border-bottom: 1px solid gray;'>
+  <block wx:for="{{title}}">
+    <view style='width: {{bar_width}};height: 100%;text-align: center;align-self: center;font-size: 12px;font-weight: bold;border-bottom-width: medium;color:{{color[index]}};border-bottom: {{border[index]}}px solid blue;' bindtap='choose' data-id='{{index}}'>{{title[index]}}</view>
+  </block>
+</view>

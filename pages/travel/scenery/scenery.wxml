@@ -1,39 +1,29 @@
-<!--pages/travel/scenery/scenery.wxml-->
-<!-- <text>pages/travel/scenery/scenery.wxml</text> -->
-<swiper indicator-dots autoplay>
-  <block>
-    <swiper-item><image src='../../../icon/住宿.png'/></swiper-item>
-    <swiper-item><image src='../../../icon/出行.png'/></swiper-item>
-  </block>
+<swiper indicator-dots autoplay style='width:100%;'>
+  <!-- <block> -->
+    <swiper-item><image src='/img/travel/hz-xh1.jpg' mode='aspectFill' style='width:100%'/></swiper-item>
+    <swiper-item><image src='/icon/hotel.png' mode='aspectFill' style='width:100%'/></swiper-item>
+    <swiper-item><image src='/icon/travel.png' mode='aspectFill' style='width:100%'/></swiper-item>
+  <!-- </block> -->
 </swiper>
 
 <view class='weather'>
   <view class='place'>{{place}}</view>
+  <include src='/include/star.wxml' />
   <view class='tempereture'>{{weather}}{{tempereture}}℃</view>
 </view>
 
-<view style='border: 1px solid lightgray'>
-  <view style='border: 1px solid lightgray' bindtap='goDetails'>
-    <view class='diary_title'>精彩游记</view>
-    <image src='../../../img/travel/hz-xh1.jpg' mode='aspectFill' class='diary_picture'/>
-  </view>
-  <view bindtap='seeMore' style='display: flex; flex-direction: row;'>
-    <view class='diary_title'>查看更多</view>
-    <image src='../../../icon/小箭头.png' class='array'/>
-  </view>
+<view class='like'>
+  <text style='font-size:14px'>{{likeSum}}</text>
+  <image src='/icon/like{{likeState?"_red":""}}.png' class='lfButton' bindtap='likeButton'/>
+  <image src='/icon/fav{{favState?"_golden":""}}.png' class='lfButton' bindtap='favButton'/>
 </view>
 
+
+<view class='title'>精彩游记</view>
+<include src='/include/diary.wxml' />
+
 <view class='title'>必去景点</view>
-<swiper next-margin="220px" style='height: 100px'>
-  <block wx:for="{{arrays}}">
-    <view class='item'>
-      <swiper-item>
-        <image src='{{item.img}}' mode='aspectFit' class='picture'/>
-        <view class='name'>{{item.name}}</view>
-      </swiper-item>
-    </view>
-  </block>
-</swiper>
+<include src='/include/recommend.wxml' />
 
 <view class='title'>注意事项</view>
-<view class='attention'>杭州多雨，记得带伞</view>
+<view class='attention'>{{attention}}</view>

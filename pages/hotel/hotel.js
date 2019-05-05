@@ -1,15 +1,19 @@
-// pages/Hotel/Hotel.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    pageTitle: "杭州",
     arrays: [],
     color: ['blue', 'black', 'black', 'black'],
     border: [1, 0, 0, 0],
-    
+    title: ['全部', '酒店', '民宿', '青年旅社'],
+    type: 0,
+    bar_width: '25%',
+    sum: 2,
+    change_city: true,
+  },
+
+  changeCity: function () {
+    wx.navigateTo({
+      url: '/pages/city/city'
+    })
   },
 
   initData: function () {
@@ -19,26 +23,39 @@ Page({
     var obj0 = new Object();
     obj0.img = src + 'hz-xh1.jpg';
     obj0.name = '如家酒店';
+    obj0.score = 3.9;//
     obj0.price = 120;
-    // obj0.intro = '欲把西湖比西子，淡妆浓抹总相宜';
+    obj0.status = '全国连锁';
+    obj0.distance = '14.2km';
+    obj0.street = '西湖/南宋御街';
+    obj0.icon = '各种icon';//
+    obj0.type = 1;
     arrays[0] = obj0;
     arrays[1] = obj0;
 
     return arrays;
   },
 
-  choose: function(e){
-    var id = e.currentTarget.dataset.id;
+  choose(e) {
+    var id;
+    var ischange = e.currentTarget.dataset.ischange;
+    if (ischange)
+      id = e.detail.current;
+    else
+      id = e.currentTarget.dataset.id;
     var arr = 'color[' + id + ']';
     var ar = 'border[' + id + ']';
-    this.setData({[arr] : 'blue'});
-    this.setData({[ar] : 1});
-    for(var i=0;i<4;i++){
-      if(i!=id){
+    this.setData({
+      [arr]: 'blue',
+      [ar]: 1,
+      type: id
+    });
+    for (var i = 0; i < 5; i++) {
+      if (i != id) {
         var a = 'color[' + i + ']';
         var b = 'border[' + i + ']';
-        this.setData({[a] : 'black'});
-        this.setData({[b] : 0});
+        this.setData({ [a]: 'black' });
+        this.setData({ [b]: 0 });
       }
     }
   },
@@ -57,60 +74,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: this.data.pageTitle
-    })
     var arrays = this.initData();
     this.setData({ arrays: arrays });
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  onShow: function (options) {
+    this.setData({ change_city: true });
+    if (options)
+      wx.setNavigationBarTitle({
+        title: options.name
+      })
+    else
+      wx.setNavigationBarTitle({
+        title: getApp().globalData.city
+      })
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({ change_city: !this.data.change_city });
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

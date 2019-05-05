@@ -1,20 +1,71 @@
-// pages/travel/scenery/scenery.js
 Page({
-
-    /**
-     * 页面的初始数据
-     */
   data: {
+    id: 0,
+    score: 0,
     arrays: [],
     place: '西湖',
     weather: '小雨',
-    tempereture: '7~12'
+    tempereture: '7~12',
+    attention: '杭州多雨，记得带伞',
+    likeState: false,
+    favState: false,
+    likeSum: 18,
+    diary_name: '夜游西湖',
+    seeMore: true,
+    diarys: [],
 
+  },
+
+  likeButton: function(){
+    var a = this.data.likeState;
+    var b = parseInt(this.data.likeSum);
+    this.setData({ likeState: !a });
+    if (this.data.likeState) {
+      this.setData({ likeSum: b + 1 });
+      wx.showToast({
+        title: '点赞成功！',
+        icon: '',
+        image: '',
+        duration: 1000,
+        mask: true,
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
+    else
+      this.setData({ likeSum: b - 1 });
+  },
+
+  favButton: function () {
+    var a = this.data.favState
+    this.setData({ favState: !a });
+    if(this.data.favState)
+      wx.showToast({
+        title: '收藏成功！',
+        icon: '',
+        image: '',
+        duration: 1000,
+        mask: true,
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+  },
+
+  initDiarys: function(){
+    var d = [];
+    var obj = new Object();
+    obj.name = this.data.diary_name;
+    obj.id = 0;
+    obj.picture = '/img/travel/hz-xh1.jpg';
+    d[0] = obj;
+    return d;
   },
 
   initData: function () {
     var arrays = [];
-    var src = '../../../img/travel/';
+    var src = '/img/travel/';
 
     var obj0 = new Object();
     obj0.img = src + 'hz-xh1.jpg';
@@ -46,70 +97,27 @@ Page({
 
   goDetails: function(){
     wx.navigateTo({
-      url: 'diary_main/diary_main',
+      url: 'diary_main/diary_main?diary_id=0&diary_title=西湖如画2333',
     })
   },
   seeMore: function () {
     wx.navigateTo({
-      url: 'diary_list/diary_list',
+      url: 'diary_list/diary_list?name=' + this.data.place,
     })
   },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
   onLoad: function (options) {
     var arrays = this.initData();
-    this.setData({ arrays: arrays });
-
-  },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
+    var d = this.initDiarys();
+    this.setData({
+      id: options.id,
+      place: options.name,
+      likeSum: options.id,//
+      score: options.score,
+      arrays: arrays,
+      diarys: d
+    });
+    wx.setNavigationBarTitle({ title: options.name });
+  }
+  
 })

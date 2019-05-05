@@ -1,21 +1,22 @@
 <!--pages/hotel/reserve/reserve.wxml-->
 <!-- <text>pages/hotel/reserve/reserve.wxml</text> -->
-<image src='../../../img/travel/hz-xh1.jpg' mode='aspectFit' class='ad'/>
+<image src='/img/travel/hz-xh1.jpg' mode='aspectFit' style='width: 100%;'/>
 <view class='introduce'>
   <view>
     <view style='display:flex;flex-direction:row;'>
-      <view class='name'>如家酒店</view>
-      <view class='count' style='position: relative;left: 10px;align-self:center'>全国连锁</view>
+      <view class='name'>{{name}}</view>
+      <view class='count' style='margin-left: 10px;align-self:center'>{{tag}}</view>
+      <image src='/icon/fav{{favStatus?"_golden":""}}.png' mode='aspectFit' class='fav' bindtap='favButton'/>
     </view>
     <view class='count' style='display:flex;flex-direction:row;'>
-      <text style='color: black'>星星星星4.5分</text>
-      <text style='margin-left: 20px;'>西湖/南宋御街</text>
+      <include src='/include/star.wxml' />
+      <text style='margin-left: 20px;'>{{street}}</text>
     </view>
   </view>
-  <image src='../../../icon/电话.png' mode='aspectFit' class='phone'/>
+  <image src='/icon/phone.png' mode='aspectFit' class='phone' bindtap='call'/>
 </view>
 <view class='introduce' style='margin-left: 5px'>
-  <image src='../../../icon/定位.png' mode='aspectFit' class='locate'/>
+  <image src='/icon/locate.png' mode='aspectFit' class='locate'/>
   <view>
     <view class='location'>{{location}}</view>
     <view class='count'>{{route}}</view>
@@ -38,7 +39,7 @@
     </view>
   </view>
   <view class='count' style='color: black; align-self: center;'>共1晚</view>
-  <image src='../../../icon/小箭头.png' mode='aspectFit' class='array'/>
+  <image src='/icon/array.png' mode='aspectFit' class='array'/>
 </view>
 
 <block wx:for="{{arrays}}">

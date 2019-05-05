@@ -1,20 +1,9 @@
-<!--pages/personal/favorate/favorate.wxml-->
-<!-- <text>pages/personal/favorate/favorate.wxml</text> -->
-<!--pages/personal/history/history.wxml-->
-<!-- <text>pages/personal/history/history.wxml</text> -->
-<view class='bar'>
-  <view class='barItem' bindtap='choose' data-id='0' style='color:{{color[0]}};border-bottom: {{border[0]}}px solid blue;'>全部</view>
-  <view class='barItem' bindtap='choose' data-id='1' style='color:{{color[1]}};border-bottom: {{border[1]}}px solid blue;'>出行</view>
-  <view class='barItem' bindtap='choose' data-id='2' style='color:{{color[2]}};border-bottom: {{border[2]}}px solid blue;'>美食</view>
-  <view class='barItem' bindtap='choose' data-id='3' style='color:{{color[3]}};border-bottom: {{border[3]}}px solid blue;'>住宿</view>
-</view>
+<include src='/include/title_bar.wxml' />
 
-<block wx:for="{{arrays}}">
-  <view class='item'>
-    <image class='img' mode='aspectFit' src='{{item.img}}'/>
-    <text class='journey'>{{item.pl}} - {{item.name}}</text>
-    <text class='type'>{{item.type}}</text>
-    <!-- <text class='price'>￥{{item.price}}</text> -->
-    <image class='star' mode='aspectFit' src='../../../icon/收藏{{arrays[item.id].check==true?" (1)":""}}.png' bindtap='star' data-no='{{item.id}}'/>
-  </view>
-</block>
+<swiper current='{{type}}' circular='true' bindchange='choose' data-ischange='true' style='height:{{76*sum}}px;'>
+  <include src='/include/fav_list' />
+  <include src='/include/fav_list' />
+  <include src='/include/fav_list' />
+  <include src='/include/fav_list' />
+  <include src='/include/fav_list' />
+</swiper>

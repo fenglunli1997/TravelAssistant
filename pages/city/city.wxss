@@ -1,0 +1,11 @@
+.row{
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+.button{
+  margin-left: 5px;
+  font-size: 10px;
+  font-weight: bold;
+  color: blue;
+}

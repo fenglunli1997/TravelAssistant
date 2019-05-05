@@ -1,6 +1,4 @@
-<!--pages/personal/about/about.wxml-->
-<!-- <text>pages/personal/about/about.wxml</text> -->
-<image src='../../../icon/我 的.png' mode='aspectFit'/>
+<image src='/icon/personal.png' mode='aspectFit'/>
 <view style='text-align:center'>
   <view class='title'>旅行先知</view>
   <view class='count'>版本：v1.0</view>

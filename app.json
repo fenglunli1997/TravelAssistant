@@ -25,7 +25,9 @@
     "pages/personal/history/history",
     "pages/personal/favorate/favorate",
     "pages/personal/about/about",
-    "pages/traffic/route/route"
+    "pages/traffic/route/route",
+    "pages/comment/comment",
+    "pages/city/city"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -42,33 +44,34 @@
       {
         "pagePath": "pages/travel/travel",
         "text": "游景点",
-        "iconPath": "icon/景点.png",
-        "selectedIconPath": "icon/景点 (1).png"
+        "iconPath": "icon/scenery.png",
+        "selectedIconPath": "icon/scenery_blue.png"
       },
       {
         "pagePath": "pages/traffic/traffic",
         "text": "乘交通",
-        "iconPath": "icon/出行.png",
-        "selectedIconPath": "icon/出行 (1).png"
+        "iconPath": "icon/travel.png",
+        "selectedIconPath": "icon/travel_blue.png"
       },
       {
         "pagePath": "pages/food/food",
         "text": "尝美食",
-        "iconPath": "icon/美食.png",
-        "selectedIconPath": "icon/美食 (1).png"
+        "iconPath": "icon/food.png",
+        "selectedIconPath": "icon/food_blue.png"
       },
       {
         "pagePath": "pages/hotel/hotel",
         "text": "找住宿",
-        "iconPath": "icon/住宿.png",
-        "selectedIconPath": "icon/住宿 (1).png"
+        "iconPath": "icon/hotel.png",
+        "selectedIconPath": "icon/hotel_blue.png"
       },
       {
         "pagePath": "pages/personal/personal",
         "text": "我的",
-        "iconPath": "icon/我 的.png",
-        "selectedIconPath": "icon/我 的 (1).png"
+        "iconPath": "icon/personal.png",
+        "selectedIconPath": "icon/personal_blue.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
