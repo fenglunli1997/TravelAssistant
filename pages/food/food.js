@@ -1,6 +1,6 @@
 Page({
   data: {
-    arrays: [],
+    restaurants: [],
     change_city: true,
   },
 
@@ -11,49 +11,33 @@ Page({
   },
 
   goRestaurant: function(e){
-    var id = e.currentTarget.dataset.id;
+    var id = parseInt(e.currentTarget.dataset.id);
     wx.navigateTo({
-      url: 'restaurant/restaurant?id=' + id + '&score=' + this.data.arrays[id].score + '&price=' + this.data.arrays[id].price + '&name=' + this.data.arrays[id].name
+      url: 'restaurant/restaurant?id=' + id + '&score=' + this.data.restaurants[id].score + '&price=' + this.data.restaurants[id].price + '&name=' + this.data.restaurants[id].name
     })
   },
 
   initData: function(){
-    var arrays = [];
-    var src = '/img/travel/';
-
-    var obj0 = new Object();
-    obj0.id = 0;
-    obj0.img = src + 'hz-xh1.jpg';
-    obj0.name = '外婆家';
-    obj0.score = 4.5;
-    obj0.price = 61;
-    obj0.distance = '14.2km';
-    obj0.street = '湖滨银泰';
-    obj0.type = '杭帮菜';
-    obj0.tag = '家人聚餐';
-    arrays[0] = obj0;
-
-    var obj1 = new Object();
-    obj1.id = 1;
-    obj1.img = src + 'hz-xh1.jpg';
-    obj1.name = '弄堂里';
-    obj1.score = 2.8;
-    obj1.price = 99;
-    obj1.distance = '0.8km';
-    obj1.street = '弗雷德广场';
-    obj1.type = '杭帮菜';
-    obj1.tag = '家人聚餐';
-    arrays[1] = obj1;
-
-    return arrays;
+    var that = this;
+    wx.request({
+      url: getApp().globalData.url + 'RestaurantServlet', header: {
+        'content-type': 'Application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        that.setData({ restaurants: res.data });
+      },
+      complete: function (res) {
+        console.log(res)
+      }
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var arrays = this.initData();
-    this.setData({ arrays: arrays });
+    this.initData();
   },
 
   /**

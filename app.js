@@ -10,6 +10,16 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        var code = res.code;
+        if(code){
+          console.log("获取用户登录凭证："+code);
+          wx.request({
+            url: '192.168.137.1:8080/TAServer2/wxlogin',
+            data: {code: code}
+          })
+        }else{
+          console.log("获取用户登录凭证失败！");
+        }
       }
     })
     // 获取用户信息
@@ -35,6 +45,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    city: '杭州'//自定义
+    city: '杭州',//自定义
+    url: 'http://192.168.137.1:8080/TAServer2_war_exploded/'
   }
 })

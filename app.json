@@ -27,7 +27,8 @@
     "pages/personal/about/about",
     "pages/traffic/route/route",
     "pages/comment/comment",
-    "pages/city/city"
+    "pages/city/city",
+    "pages/personal/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
