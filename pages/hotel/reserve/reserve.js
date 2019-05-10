@@ -1,70 +1,55 @@
-// pages/hotel/reserve/reserve.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    pageTitle: '如家酒店',
-    name: '如家酒店',
-    tag: '全国连锁',
-    score: 2.3,
-    street: '西湖/南宋御街',
-    location: '上城区东坡路7号湖滨银泰in77B区B1层',
-    route: '距地铁1号线龙翔桥站C2口10m',
-    arrays: [],
+    hotel: {},
     favStatus: false,
-
   },
 
   favButton: function(){
-    this.setData({ favStatus : !this.data.favStatus });
+    this.setData({ favStatus: !this.data.favStatus });
     if (this.data.favStatus)
-      wx.showToast({
-        title: '收藏成功！',
-      })
+      wx.showToast({title: '收藏成功！',})
   },
 
   call: function(){
     wx.makePhoneCall({
-      phoneNumber: '18100177098',
+      phoneNumber: this.data.hotel.hoPhone,
     })
   },
 
-  initData: function () {
-    var arrays = [];
-    var src = '/img/travel/';
+  // chooseTime: function(){
+  //   ;
+  // },
 
-    var obj0 = new Object();
-    obj0.img = src + 'hz-xh1.jpg';
-    obj0.name = '温馨大床房B';
-    obj0.price = 120;
-    // obj0.intro = '欲把西湖比西子，淡妆浓抹总相宜';
-    arrays[0] = obj0;
-    arrays[1] = obj0;
-
-    return arrays;
-  },
-
-  chooseTime: function(){
-    ;
+  /**
+   * 数据初始化函数--
+   */
+  initData: function(){
+    var that = this;
+    wx.getStorage({
+      key: 'hotel',
+      success: function (res) {
+        // console.log(res)
+        that.setData({ hotel: res.data });
+      },
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({title: this.data.pageTitle});
-    var arrays = this.initData();
-    this.setData({ arrays: arrays });
-
+    this.initData();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.setNavigationBarTitle({ title: this.data.hotel.hoName });//
   },
 
   /**

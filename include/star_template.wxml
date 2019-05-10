@@ -1,0 +1,10 @@
+<template name="star_template">
+  <view style='display: flex;flex-direction: row;'>
+    <image src='/icon/fav{{x>0?(x>=1?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+    <image src='/icon/fav{{x>1?(x>=2?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+    <image src='/icon/fav{{x>2?(x>=3?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+    <image src='/icon/fav{{x>3?(x>=4?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+    <image src='/icon/fav{{x>4?(x>=5?"_golden":"_half"):""}}.png' style='width: 12px;height: 12px;align-self: center;'/>
+    <view class='count' style='margin-left:2px;'>{{x}}分</view>
+  </view>
+</template>

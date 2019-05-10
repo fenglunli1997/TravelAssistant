@@ -8,7 +8,9 @@
 
 <view class='weather'>
   <view class='place'>{{place}}</view>
-  <include src='/include/star.wxml' />
+  <!-- <include src='/include/star.wxml' /> -->
+  <import src="/include/star_template.wxml"/>
+  <template is="star_template" data="{{x:(score==undefined?'暂无评':score)}}"/>
   <view class='tempereture'>{{weather}}{{tempereture}}℃</view>
 </view>
 

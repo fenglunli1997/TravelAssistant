@@ -5,7 +5,9 @@
     <image src='{{item.img}}' mode='aspectFit' class='picture'/>
     <view>
         <view class='name'>{{item.name}}</view>
-        <include src='/include/star_item.wxml' />
+        <!-- <include src='/include/star_item.wxml' /> -->
+        <import src="/include/star_template.wxml"/>
+        <template is="star_template" data="{{x:(item.score==undefined?'暂无评':item.score)}}"/>
         <view class='count'>
             <view>{{item.town}}</view>
             <view style='position: relative;left: 20px'>{{item.route}}</view>

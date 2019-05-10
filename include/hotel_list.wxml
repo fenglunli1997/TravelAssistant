@@ -1,22 +1,20 @@
-<swiper-item>
-  <block wx:for="{{arrays}}">
-    <view class='item' bindtap='goReserve' wx:if="{{type==0||item.type==type}}">
+<!-- {"hoId":1,"hoLocation":"上城区仁和路22号","hoName":"汉庭酒店(杭州西湖仁和路店)","hoPhone":"0571-87924008","hoPicture":null,"hoPrice":284,"hoRoute":null,"hoStatus":1,"hoStreet":"平海路","hoTag":"11111","hoType":0,"toId":"1"}-->
+<!-- <swiper-item> -->
+  <block wx:for="{{hotels}}">
+    <view class='item' bindtap='goReserve' data-id='{{item.hoId}}' wx:if="{{type==0||item.hoType+1==type}}">
       <image src='{{item.img}}' mode='aspectFit' class='picture'/>
       <view>
-        <view class='name'>
-          {{item.name}}
-          <text style='margin-left:20px; align-self: center' class='count'>{{title[item.type]}}</text>
-          <text style='margin-left:20px; align-self: center' class='count'>{{item.status}}</text>
-        </view>
+        <view class='name'>{{item.hoName}}</view>
         <view class='count'>
-          <include src='/include/star_item.wxml' />
+          <import src="/include/star_template.wxml"/>
+          <template is="star_template" data="{{x:(item.hoScore==undefined?'暂无评':item.hoScore)}}"/>
           <view style='position: relative;left: 30px'>{{item.distance}}</view>
         </view>
-        <view class='count'>{{item.street}}</view>
-        <view class='count'>{{item.icon}}</view>
+        <view class='count'>{{item.hoStreet}}</view>
+        <view class='count'>{{item.hoTag}}</view>
       </view>
-      <view class='priceTag'>￥<text class='price'>{{item.price}}</text>起</view>
+      <view class='priceTag'>￥<text class='price'>{{item.hoPrice}}</text>起</view>
       <image src='/icon/array.png' class='array'/>
     </view>
   </block>
-</swiper-item>
+<!-- </swiper-item> -->

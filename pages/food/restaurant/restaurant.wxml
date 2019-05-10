@@ -1,20 +1,21 @@
 <image src='/img/travel/hz-xh1.jpg' mode='aspectFit' style='width: 100%;'/>
 <view class='introduce'>
   <view>
-    <view class='name'>{{name}}</view>
+    <view class='name'>{{restaurant.reName}}</view>
     <view class='count'>
-      <include src='/include/star.wxml' />
-      <view style='margin-left: 20px'>￥{{price}}/人</view>
+      <import src="/include/star_template.wxml"/>
+      <template is="star_template" data="{{x:(restaurant.reScore==undefined?'暂无评':restaurant.reScore)}}"/>
+      <view style='margin-left: 20px'>￥{{restaurant.rePrice}}/人</view>
     </view>
-    <view class='count'>{{status?"营业中":"暂不营业"}}<text style='margin-left: 8px'>{{time}}</text></view>
+    <view class='count'>{{restaurant.reStatus==1?"营业中":"暂不营业"}}<text style='margin-left: 8px'>{{restaurant.reTime}}</text></view>
   </view>
   <image src='/icon/phone.png' mode='aspectFit' class='phone' bindtap='call'/>
 </view>
 <view class='introduce' style='margin-left: 5px'>
   <image src='/icon/locate.png' mode='aspectFit' class='locate'/>
   <view>
-    <view class='location'>{{location}}</view>
-    <view class='count'>{{route}}</view>
+    <view class='location'>{{restaurant.reLocation}}</view>
+    <view class='count'>{{restaurant.reRoute}}</view>
   </view>
 </view>
 

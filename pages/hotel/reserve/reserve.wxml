@@ -1,16 +1,15 @@
-<!--pages/hotel/reserve/reserve.wxml-->
-<!-- <text>pages/hotel/reserve/reserve.wxml</text> -->
 <image src='/img/travel/hz-xh1.jpg' mode='aspectFit' style='width: 100%;'/>
 <view class='introduce'>
   <view>
     <view style='display:flex;flex-direction:row;'>
-      <view class='name'>{{name}}</view>
-      <view class='count' style='margin-left: 10px;align-self:center'>{{tag}}</view>
+      <view class='name'>{{hotel.hoName}}</view>
+      <view class='count' style='margin-left: 10px;align-self:center'>{{hotel.hoTag}}</view>
       <image src='/icon/fav{{favStatus?"_golden":""}}.png' mode='aspectFit' class='fav' bindtap='favButton'/>
     </view>
     <view class='count' style='display:flex;flex-direction:row;'>
-      <include src='/include/star.wxml' />
-      <text style='margin-left: 20px;'>{{street}}</text>
+      <import src="/include/star_template.wxml"/>
+      <template is="star_template" data="{{x:(hotel.hoScore==undefined?'暂无评':hotel.hoScore)}}"/>
+      <text style='margin-left: 20px;'>{{hotel.hoStreet}}</text>
     </view>
   </view>
   <image src='/icon/phone.png' mode='aspectFit' class='phone' bindtap='call'/>
@@ -18,8 +17,8 @@
 <view class='introduce' style='margin-left: 5px'>
   <image src='/icon/locate.png' mode='aspectFit' class='locate'/>
   <view>
-    <view class='location'>{{location}}</view>
-    <view class='count'>{{route}}</view>
+    <view class='location'>{{hotel.hoLocation}}</view>
+    <view class='count'>{{hotel.hoRoute}}</view>
   </view>
 </view>
 
@@ -42,6 +41,7 @@
   <image src='/icon/array.png' mode='aspectFit' class='array'/>
 </view>
 
+<!-- arrays已经被删除，需要导入数据 -->
 <block wx:for="{{arrays}}">
   <view class='item'>
     <image src='{{item.img}}' mode='aspectFit' class='picture'/>

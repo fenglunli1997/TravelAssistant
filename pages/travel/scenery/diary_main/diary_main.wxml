@@ -1,4 +1,8 @@
 <image src='{{picture}}' mode='aspectFit' style='width: 100%;'/>
-<view style='margin-left:15px;'><include src='/include/star.wxml' /></view>
+<view style='margin-left:15px;'>
+  <!-- <include src='/include/star.wxml' /> -->
+  <import src="/include/star_template.wxml"/>
+  <template is="star_template" data="{{x:(score==undefined?'暂无评':score)}}"/>
+</view>
 <view class='main'>{{info}}</view>
 <include src='/include/comment_list.wxml' />

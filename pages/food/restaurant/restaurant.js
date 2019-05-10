@@ -1,14 +1,6 @@
 Page({
   data: {
     recommend_title: '推荐菜',
-    id: 0,
-    name: '',
-    score: 0,
-    price: 0,
-    status: true,
-    time: '10:30-15:00,16:30-21:00',
-    location: '上城区东坡路7号湖滨银泰in77B区B1层',
-    route: '距地铁1号线龙翔桥站C2口10m',
     arrays: [],
     arrays_pingjia: [],
     likeSum: 108,
@@ -113,9 +105,15 @@ Page({
   },
 
   call: function () {
-    wx.makePhoneCall({
-      phoneNumber: '18100177098',
-    })
+    var phone = this.data.phone;
+    if(phone)
+      wx.makePhoneCall({
+        phoneNumber: phone,
+      })
+    else
+      wx.showToast({
+        title: '该商家没有电话！'
+      })
   },
 
   /**
@@ -123,13 +121,15 @@ Page({
    */
   onLoad: function (options) {
     var arrays = this.initFood();
-    this.setData({
-      id: options.id,
-      name: options.name,
-      score: options.score,
-      price: options.price,
-      arrays: arrays
-    });
+    var that = this;
+    wx.getStorage({
+      key: 'restaurant',
+      success: function (res) {
+        // console.log(res)
+        that.setData({ restaurant: res.data });
+      },
+    })
+    this.setData({ arrays: arrays});
   },
 
   /**

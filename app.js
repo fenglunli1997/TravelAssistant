@@ -1,6 +1,25 @@
 //app.js
 App({
+  initData: function(){
+    // var town = [];
+    var that = this;
+    wx.request({
+      url: that.globalData.url_q + 'Town',//
+      method: 'GET',
+      success: function(res){
+        // town = res.data
+        that.globalData.town = res.data;
+        console.log(res);
+        console.log(that.globalData.town);
+      }
+    });
+    // this.globalData.town = town;
+    // this.setData({ town: town});
+  },
+
   onLaunch: function () {
+    this.initData();
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -46,6 +65,9 @@ App({
   globalData: {
     userInfo: null,
     city: '杭州',//自定义
-    url: 'http://192.168.137.1:8080/TAServer2_war_exploded/'
+    url: 'http://192.168.137.1:8080/TAServer2_war_exploded/',
+    url_q: 'http://192.168.137.1:8080/TAServer2_war_exploded/QueryServlet?table=',
+    // url_q: App.globalData.url + 'http://192.168.137.1:8080/TAServer2_war_exploded/QueryServlet?table=',
+    town: [],
   }
 })

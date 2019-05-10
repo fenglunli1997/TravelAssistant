@@ -1,11 +1,11 @@
 <include src='/include/change_city.wxml' />
 <include src='/include/title_bar.wxml' />
 
-<swiper current='{{type}}' circular='true' bindchange='choose' data-ischange='true' style='height:{{90*sum}}px;'>
+<!-- <swiper current='{{type}}' circular='true' bindchange='choose' data-ischange='true' style='height:{{90*sum}}px;'> -->
+  <include src='/include/hotel_list' />
+  <!-- <include src='/include/hotel_list' />
   <include src='/include/hotel_list' />
   <include src='/include/hotel_list' />
-  <include src='/include/hotel_list' />
-  <include src='/include/hotel_list' />
-</swiper>
+</swiper> -->
 
 <!-- <image src='/icon/search.png' class='search' bindtap='search'/> -->

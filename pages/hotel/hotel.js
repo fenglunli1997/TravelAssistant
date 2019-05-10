@@ -1,12 +1,12 @@
 Page({
   data: {
-    arrays: [],
+    hotels: [],
     color: ['blue', 'black', 'black', 'black'],
     border: [1, 0, 0, 0],
     title: ['全部', '酒店', '民宿', '青年旅社'],
     type: 0,
     bar_width: '25%',
-    sum: 2,
+    // sum: 2,
     change_city: true,
   },
 
@@ -17,23 +17,19 @@ Page({
   },
 
   initData: function () {
-    var arrays = [];
-    var src = '../../img/travel/';
-
-    var obj0 = new Object();
-    obj0.img = src + 'hz-xh1.jpg';
-    obj0.name = '如家酒店';
-    obj0.score = 3.9;//
-    obj0.price = 120;
-    obj0.status = '全国连锁';
-    obj0.distance = '14.2km';
-    obj0.street = '西湖/南宋御街';
-    obj0.icon = '各种icon';//
-    obj0.type = 1;
-    arrays[0] = obj0;
-    arrays[1] = obj0;
-
-    return arrays;
+    var that = this;
+    wx.request({
+      url: getApp().globalData.url_q + 'Hotel', header: {
+        'content-type': 'Application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        that.setData({ hotels: res.data });
+      },
+      complete: function (res) {
+        console.log(res)
+      }
+    });
   },
 
   choose(e) {
@@ -60,22 +56,24 @@ Page({
     }
   },
 
-  search: function(){
-    ;
-  },
+  // search: function(){
+  //   ;
+  // },
 
-  goReserve(){
-    wx.navigateTo({
-      url: 'reserve/reserve',
-    })
+  goReserve: function(e){
+    var id = parseInt(e.currentTarget.dataset.id)-1;
+    wx.setStorage({
+      key: 'hotel',
+      data: this.data.hotels[id],
+    });
+    wx.navigateTo({url: 'reserve/reserve'});
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var arrays = this.initData();
-    this.setData({ arrays: arrays });
+    this.initData();
   },
 
   /**

@@ -1,5 +1,7 @@
 <include src='/include/change_city.wxml' />
 
+<!-- "reAddress":"上城区延安路278号湖滨银泰in77C1区2层209室","reId":1,"reName":"外婆家（湖滨银泰in77C区店）","rePhone":"0571-85870307","rePicture":null,"rePrice":52,"reRoute":null,"reStatus":1,"reTag":0,"reTime":"周一至周日 10:30-21:30","reType":1,"toId":1 -->
+
 <block wx:for="{{restaurants}}">
   <view style='border: 1px solid lightgray;width:100%' bindtap='goRestaurant' data-id='{{item.reId}}'>
     <view class='item'>
@@ -7,38 +9,18 @@
       <view>
           <view class='name'>{{item.reName}}</view>
           <view class='count'>
-              <include src='/include/star_item.wxml' />
+              <!-- <include src='/include/star_item.wxml' /> -->
+              <!-- <include src='/include/star.wxml' /> -->
+              <import src="/include/star_template.wxml"/>
+              <template is="star_template" data="{{x:(item.reScore==undefined?'暂无评':item.reScore)}}"/>
               <view style='position: relative;left: 40px'>￥{{item.rePrice}}/人</view>
               <view style='position: absolute;right:8px'>{{item.distance}}</view>
           </view>
           <view class='count'>
-              <view>{{item.reStreet}} | {{item.reType}}</view>
-              <view style='position: relative;left: 20px'>{{item.reTag}}</view>
+              <view>{{town[item.toId-1].toName}} | {{type[item.reType]}}</view>
+              <view style='position: relative;left: 20px'>{{tag[item.reTag]}}</view>
           </view>
       </view>
     </view>
   </view>
 </block>
-
-
-<!-- <include src='/include/change_city.wxml' />
-
-<block wx:for="{{arrays}}">
-  <view style='border: 1px solid lightgray;width:100%' bindtap='goRestaurant' data-id='{{item.id}}'>
-    <view class='item'>
-      <image src='{{item.img}}' mode='aspectFit' class='picture'/>
-      <view>
-          <view class='name'>{{item.name}}</view>
-          <view class='count'>
-              <include src='/include/star_item.wxml' />
-              <view style='position: relative;left: 40px'>￥{{item.price}}/人</view>
-              <view style='position: absolute;right:8px'>{{item.distance}}</view>
-          </view>
-          <view class='count'>
-              <view>{{item.street}} | {{item.type}}</view>
-              <view style='position: relative;left: 20px'>{{item.tag}}</view>
-          </view>
-      </view>
-    </view>
-  </view>
-</block> -->
