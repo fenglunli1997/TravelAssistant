@@ -5,6 +5,7 @@ Page({
    */
   data: {
     hotel: {},
+    room: [],
     favStatus: false,
   },
 
@@ -20,9 +21,9 @@ Page({
     })
   },
 
-  // chooseTime: function(){
-  //   ;
-  // },
+  chooseTime: function(){
+    ;
+  },
 
   /**
    * 数据初始化函数--
@@ -32,10 +33,17 @@ Page({
     wx.getStorage({
       key: 'hotel',
       success: function (res) {
-        // console.log(res)
         that.setData({ hotel: res.data });
       },
-    })
+      complete: function(){
+        wx.request({
+          url: getApp().globalData.url_q + 'Room WHERE hoId=' + parseInt(that.data.hotel.hoId),
+          success: function (res) {
+            that.setData({ room: res.data });
+          }
+        })
+      }
+    }); 
   },
 
   /**

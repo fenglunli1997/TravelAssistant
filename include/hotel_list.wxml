@@ -11,7 +11,8 @@
           <view style='position: relative;left: 30px'>{{item.distance}}</view>
         </view>
         <view class='count'>{{item.hoStreet}}</view>
-        <view class='count'>{{item.hoTag}}</view>
+        <import src="/include/hotel_tag.wxml"/>
+        <template is='hotel_tag' data="{{x:item.hoTag}}"/>
       </view>
       <view class='priceTag'>￥<text class='price'>{{item.hoPrice}}</text>起</view>
       <image src='/icon/array.png' class='array'/>

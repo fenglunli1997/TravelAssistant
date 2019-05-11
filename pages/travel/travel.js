@@ -101,7 +101,7 @@ Page({
       })
     else
       wx.setNavigationBarTitle({
-        title: getApp().globalData.city
+        title: getApp().globalData.city.ciName
       })
   },
 

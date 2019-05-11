@@ -1,0 +1,11 @@
+<template name='hotel_tag'>
+
+  <view style='display: flex;flex-direction: row;margin-bottom:3px;'>
+    <image style='width:12px; height:12px; margin-left:3px;' src='/icon/wifi.png' wx:if="{{x%100000>9999}}"/>
+    <image style='width:12px; height:12px; margin-left:3px;' src='/icon/tv.png' wx:if="{{x%10000>999}}"/>
+    <image style='width:12px; height:12px; margin-left:3px;' src='/icon/parking.png' wx:if="{{x%1000>99}}"/>
+    <image style='width:12px; height:12px; margin-left:3px;' src='/icon/luggage.png' wx:if="{{x%100>9}}"/>
+    <image style='width:12px; height:12px; margin-left:3px;' src='/icon/shower.png' wx:if="{{x%10==1}}"/>
+  </view>
+
+</template>

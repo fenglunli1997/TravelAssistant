@@ -1,5 +1,7 @@
 Page({
   data: {
+    imgs: [],
+    restaurant: {},
     recommend_title: '推荐菜',
     arrays: [],
     arrays_pingjia: [],
@@ -105,7 +107,7 @@ Page({
   },
 
   call: function () {
-    var phone = this.data.phone;
+    var phone = this.data.restaurant.rePhone;
     if(phone)
       wx.makePhoneCall({
         phoneNumber: phone,
@@ -116,11 +118,15 @@ Page({
       })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var arrays = this.initFood();
+  shown: function(e){
+    // var id = e.detail.current;
+    // for(var i=id; i<4;i++){
+    //   var a = "this.data.imgs[" + i + "]"
+    //   this.setData({ [a]: this.data.imgs[id]});
+    // }
+  },
+
+  initData() {
     var that = this;
     wx.getStorage({
       key: 'restaurant',
@@ -128,8 +134,33 @@ Page({
         // console.log(res)
         that.setData({ restaurant: res.data });
       },
-    })
+      complete: function(){
+        var url = getApp().globalData.url + 'img/Restaurant/' + that.data.restaurant.reId + '/';
+        var imgs = [url + 0, url + 1, url + 2, url + 3, url + 4];
+        // imgs[0] = url + 0;
+        that.setData({imgs: imgs});
+      }
+    });
+    var arrays = this.initFood();
     this.setData({ arrays: arrays});
+    
+
+    
+
+    // wx.setStorage({
+    //   key: 'imgs',
+    //   data: url + restaurant.reId +
+    //   success: function(){
+    //     that.setData({ imgs: imgs});
+    //   }
+    // })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.initData();
   },
 
   /**

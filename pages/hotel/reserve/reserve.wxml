@@ -3,9 +3,12 @@
   <view>
     <view style='display:flex;flex-direction:row;'>
       <view class='name'>{{hotel.hoName}}</view>
-      <view class='count' style='margin-left: 10px;align-self:center'>{{hotel.hoTag}}</view>
       <image src='/icon/fav{{favStatus?"_golden":""}}.png' mode='aspectFit' class='fav' bindtap='favButton'/>
     </view>
+
+    <import src="/include/hotel_tag.wxml"/>
+    <template is='hotel_tag' data="{{x:hotel.hoTag}}"/>
+
     <view class='count' style='display:flex;flex-direction:row;'>
       <import src="/include/star_template.wxml"/>
       <template is="star_template" data="{{x:(hotel.hoScore==undefined?'暂无评':hotel.hoScore)}}"/>
@@ -41,18 +44,17 @@
   <image src='/icon/array.png' mode='aspectFit' class='array'/>
 </view>
 
-<!-- arrays已经被删除，需要导入数据 -->
-<block wx:for="{{arrays}}">
+<block wx:for="{{room}}">
   <view class='item'>
     <image src='{{item.img}}' mode='aspectFit' class='picture'/>
     <view>
-      <view class='name'>{{item.name}}</view>
+      <view class='name'>{{item.roName}}</view>
       <view class='count'>
-        <view>不含早餐</view>
-        <view style='margin-left: 15px'>大床</view>
-        <view style='margin-left: 15px'>有窗</view>
+        <view>{{item.roBed}}</view>
+        <view style='margin-left: 10px'>{{item.roTag%10==1?"含":"无"}}早餐</view>
+        <view style='margin-left: 6px'>{{item.roTag>9?"有":"无"}}窗</view>
       </view>
-      <view class='price'>￥{{item.price}}</view>
+      <view class='price'>￥{{item.roPrice}}</view>
     </view>
     <view style='align-self: center;position: absolute; right: 15px;'>
       <button bindtap='goOrder'>预订</button>

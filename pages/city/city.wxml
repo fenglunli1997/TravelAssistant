@@ -1,18 +1,18 @@
 <view class='row'>
   <view>当前城市：</view>
-  <button disabled='{{true}}' class='button'>浙江省</button>
-  <button disabled='{{true}}' class='button'>{{now}}市</button>
+  <button disabled='{{true}}' class='button'>{{nowProv}}省</button>
+  <button disabled='{{true}}' class='button'>{{nowCity}}市</button>
 </view>
 
 <view class='row'>
   <view>目标城市：</view>
 
-  <picker bindchange='changeProv' value='{{index}}' range='{{province}}' range-key='{{"prov"}}' mode='selector'>
-    <button class='button'>{{province[prov_selected].prov}}省</button>
+  <picker bindchange='changeProv' value='{{index}}' range='{{provinces}}' range-key='{{"prName"}}' mode='selector'>
+    <button class='button'>{{provinces[prov_selected].prName}}省</button>
   </picker>
 
-  <picker bindchange='changeCity' value='{{index}}' range='{{province[prov_selected].city}}' mode='selector'>
-    <button class='button'>{{province[prov_selected].city[city_selected]}}市</button>
+  <picker bindchange='changeCity' value='{{index}}' range='{{cities}}' range-key='{{"ciName"}}' mode='selector'>
+    <button class='button'>{{cities[city_selected].ciName}}市</button>
   </picker>
 </view>
 

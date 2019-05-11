@@ -5,7 +5,8 @@ Page({
     type: [],
     tag: ['家人聚餐', '快餐', '饮品', '其它'],
     town: [],
-    score: 'item.reScore'
+    score: 'item.reScore',
+    url: ''
   },
 
   changeCity: function () {
@@ -31,9 +32,6 @@ Page({
       success: function (res) {
         that.setData({ restaurants: res.data });
       },
-      // complete: function (res) {
-      //   console.log(res)
-      // }
     });
     var type = [];
     type[0] = '其它';
@@ -50,9 +48,16 @@ Page({
     type[23] = '烤肉';
     type[24] = '牛排';
     type[30] = '自助';
+    var that = this;
+    wx.getStorage({
+      key: 'town',
+      success: function(res) {
+        that.setData({ town: res.data});
+      },
+    })
     this.setData({
       type: type,
-      town: getApp().globalData.town
+      url: getApp().globalData.url + 'img/Restaurant/'
     });
   },
 

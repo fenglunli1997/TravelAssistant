@@ -1,4 +1,12 @@
-<image src='/img/travel/hz-xh1.jpg' mode='aspectFit' style='width: 100%;'/>
+<!-- <image src='/img/travel/hz-xh1.jpg' mode='aspectFit' style='width: 100%;'/> -->
+<swiper indicator-dots autoplay style='width:100%;'>
+  <block wx:for="{{imgs}}">
+    <swiper-item>
+      <image src='{{item}}.jpg' mode='aspectFit' style='width:100%' binderror='shown'/>
+    </swiper-item>
+  </block>
+</swiper>
+
 <view class='introduce'>
   <view>
     <view class='name'>{{restaurant.reName}}</view>
@@ -14,8 +22,8 @@
 <view class='introduce' style='margin-left: 5px'>
   <image src='/icon/locate.png' mode='aspectFit' class='locate'/>
   <view>
-    <view class='location'>{{restaurant.reLocation}}</view>
-    <view class='count'>{{restaurant.reRoute}}</view>
+    <view class='location'>{{restaurant.reAddress}}</view>
+    <view class='count'>{{restaurant.reRoute==null?"":restaurant.reRoute}}</view>
   </view>
 </view>
 

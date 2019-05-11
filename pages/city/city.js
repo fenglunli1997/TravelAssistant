@@ -1,27 +1,50 @@
-// pages/city/city.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    now: '',
-
     prov_selected: 0,
     city_selected: 0,
+    provinces: [],
+    cities: [],
+    nowProv: '',
+    nowCity: '',
+  },
 
-    province: [{
-      prov: '浙江',
-      city: ['杭州', '宁波', '温州'],
-    },{
-      prov: '江苏',
-      city: ['南京', '苏州', '无锡'],
-    }],
+  initData(){
+    var app = getApp();
+    var that = this;
+    wx.request({
+      url: app.globalData.url_q + 'Province',
+      success: function(res){
+        that.setData({ provinces: res.data});
+      }
+    });
+    this.setCity();
+    this.setData({
+      nowProv: app.globalData.province.prName,
+      nowCity: app.globalData.city.ciName
+    })
+  },
 
+  setCity(){
+    var that = this;
+    wx.request({
+      url: getApp().globalData.url_q + 'City WHERE PrId=' + (parseInt(that.data.prov_selected) + 1),
+      success: function (res) {
+        that.setData({
+          cities: res.data
+        });
+        console.log(res.data);
+      }
+    });
   },
 
   submit: function (e) {
-    getApp().globalData.city = this.data.province[this.data.prov_selected].city[this.data.city_selected];
+    var app = getApp();
+    app.globalData.province = this.data.provinces[parseInt(this.data.prov_selected)]
+    app.globalData.city = this.data.cities[parseInt(this.data.city_selected)];
     wx.navigateBack({
       delta: 1
     });
@@ -35,6 +58,7 @@ Page({
       prov_selected: e.detail.value,
       city_selected: 0
     });
+    this.setCity();
   },
 
   changeCity: function (e) {
@@ -52,6 +76,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({ now: getApp().globalData.city});
+    this.initData();
 
   },
 
@@ -60,7 +85,7 @@ Page({
    */
   onReady: function () {
     wx.setNavigationBarTitle({
-      title: getApp().globalData.city
+      title: getApp().globalData.city.ciName
     })
   },
 

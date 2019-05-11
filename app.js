@@ -1,20 +1,18 @@
 //app.js
 App({
   initData: function(){
-    // var town = [];
     var that = this;
     wx.request({
       url: that.globalData.url_q + 'Town',//
       method: 'GET',
       success: function(res){
-        // town = res.data
-        that.globalData.town = res.data;
-        console.log(res);
-        console.log(that.globalData.town);
+        wx.setStorage({
+          key: 'town',
+          data: res.data,
+        })
+        // that.globalData.town = res.data;
       }
     });
-    // this.globalData.town = town;
-    // this.setData({ town: town});
   },
 
   onLaunch: function () {
@@ -68,6 +66,9 @@ App({
     url: 'http://192.168.137.1:8080/TAServer2_war_exploded/',
     url_q: 'http://192.168.137.1:8080/TAServer2_war_exploded/QueryServlet?table=',
     // url_q: App.globalData.url + 'http://192.168.137.1:8080/TAServer2_war_exploded/QueryServlet?table=',
+    // city_option: 'WHERE CiId =',
     town: [],
+    city: { ciId: 1, ciName: "杭州", prId: 1 },
+    province: { prId: 1, prName: "浙江" },
   }
 })

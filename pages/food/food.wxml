@@ -5,12 +5,10 @@
 <block wx:for="{{restaurants}}">
   <view style='border: 1px solid lightgray;width:100%' bindtap='goRestaurant' data-id='{{item.reId}}'>
     <view class='item'>
-      <image src='{{item.img}}' mode='aspectFit' class='picture'/>
+      <image src='{{url}}{{item.reId}}/0.jpg' mode='aspectFit' class='picture'/>
       <view>
           <view class='name'>{{item.reName}}</view>
           <view class='count'>
-              <!-- <include src='/include/star_item.wxml' /> -->
-              <!-- <include src='/include/star.wxml' /> -->
               <import src="/include/star_template.wxml"/>
               <template is="star_template" data="{{x:(item.reScore==undefined?'暂无评':item.reScore)}}"/>
               <view style='position: relative;left: 40px'>￥{{item.rePrice}}/人</view>
