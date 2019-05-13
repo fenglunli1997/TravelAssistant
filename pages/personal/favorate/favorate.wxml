@@ -1,9 +1,19 @@
+<!-- [{"faId":1,"userId":1,"id":1,"faName":"西湖","faCityName":"杭州","faType":1},{"faId":2,"userId":1,"id":4,"faName":"杭州宋城景区","faCityName":"杭州","faType":1},{"faId":1,"userId":1,"id":1,"faName":"外婆家（湖滨银泰in77C区店）","faCityName":"杭州","faType":2},{"faId":2,"userId":1,"id":3,"faName":"井一町精致日料","faCityName":"杭州","faType":2},{"faId":1,"userId":1,"id":2,"faName":"黑甜青年旅舍","faCityName":"杭州","faType":3},] -->
 <include src='/include/title_bar.wxml' />
 
-<swiper current='{{type}}' circular='true' bindchange='choose' data-ischange='true' style='height:{{76*sum}}px;'>
+<!-- <swiper current='{{type}}' circular='true' bindchange='choose' data-ischange='true' style='height:{{76*sum}}px;'>
   <include src='/include/fav_list' />
   <include src='/include/fav_list' />
   <include src='/include/fav_list' />
   <include src='/include/fav_list' />
   <include src='/include/fav_list' />
-</swiper>
+</swiper> -->
+
+<block wx:for="{{fav}}">
+  <view class='item' wx:if="{{type==0||item.faType==type}}">
+    <!-- <image class='img' mode='aspectFit' src='{{item.img}}'/> -->
+    <text class='journey'>{{item.faCityName}} - {{item.faName}}</text>
+    <text class='type'>{{title[item.faType]}}</text>
+    <image class='star' mode='aspectFit' src='/icon/fav{{item.faStatus==0?"":"_golden"}}.png' bindtap='star' data-no='{{item.faIndex}}'/>
+  </view>
+</block>

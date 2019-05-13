@@ -1,3 +1,0 @@
-<!--pages/personal/test/test.wxml-->
-<text>pages/personal/test/test.wxml</text>
-<view>{{reName}}</view>

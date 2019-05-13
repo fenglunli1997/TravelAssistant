@@ -1,7 +1,10 @@
 Page({
   data: {
-    arrays: [],
     change_city: true,
+    scenerys: [],
+    url: '',
+    town: [],
+    // cityC: ''
   },
 
   changeCity: function(){
@@ -11,76 +14,47 @@ Page({
   },
   
   goSecenery: function(e){
-    var name = e.currentTarget.dataset.name;
-    var id = e.currentTarget.dataset.id;
+    var that = this;
+    var id = parseInt(e.currentTarget.dataset.id);
+    wx.setStorage({
+      key: 'scenery',
+      data: that.data.scenerys[id-1]
+    });
     wx.navigateTo({
-      url: 'scenery/scenery?name=' + name + '&id=' + id + '&score=' + this.data.arrays[id].score,
-    })
+      url: 'scenery/scenery?id=' + id
+    });
   },
 
-  initData: function(){
-    var arrays = [];
-    var src = '/img/travel/';
-
-    var obj0 = new Object();
-    obj0.img = src + 'hz-xh1.jpg';
-    obj0.name = '西湖';
-    obj0.intro = '欲把西湖比西子，淡妆浓抹总相宜';
-    obj0.town = '西湖区';
-    obj0.route = '距离28.6km';
-    obj0.score = 4.8;
-    obj0.id = 0;
-    arrays[0] = obj0;
-
-    var obj1 = new Object();
-    obj1.img = src + 'hz-xh1.jpg';
-    obj1.name = '西溪湿地';
-    obj1.intro = '天堂的湿地，湿地的天堂';
-    obj1.town = '西湖区';
-    obj1.route = '距离28.6km';
-    obj1.score = 5;
-    obj1.id = 1;
-    arrays[1] = obj1;
-
-    var obj2 = new Object();
-    obj2.img = src + 'hz-xh1.jpg';
-    obj2.name = '千岛湖';
-    obj2.intro = '一湖藏锦绣，千岛蕴绿洲';
-    obj2.town = '西湖区';
-    obj2.route = '距离28.6km';
-    obj2.score = 1;
-    obj2.id = 2;
-    arrays[2] = obj2;
-
-    var obj3 = new Object();
-    obj3.img = src + 'hz-xh1.jpg';
-    obj3.name = '宋城千古情';
-    obj3.intro = '给我一天，还你千年';
-    obj3.town = '西湖区';
-    obj3.route = '距离28.6km';
-    obj3.score = 2.8;
-    obj3.id = 3;
-    arrays[3] = obj3;
-
-    var obj4 = new Object();
-    obj4.img = src + 'hz-xh1.jpg';
-    obj4.name = '南宋御街';
-    obj4.intro = '生活品质第一街';
-    obj4.town = '西湖区';
-    obj4.route = '距离28.6km';
-    obj4.score = 0;
-    obj4.id = 4;
-    arrays[4] = obj4;
-
-    return arrays;
+  initData: function () {
+    this.setData({
+      url: getApp().globalData.url + 'img/Scenery/',
+      // cityC: wx.getStorageSync('cityConfig')
+    });
+    console.log(this.data.cityC);
+    wx.getStorage({
+      key: 'town',
+      success: function (res) {
+        that.setData({ town: res.data });
+      },
+    })
+    var that = this;
+    wx.request({
+      url: getApp().globalData.url_q + 'Scenery',
+      header: {
+        'content-type': 'Application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        that.setData({ scenerys: res.data });
+      },
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var arrays = this.initData();
-    this.setData({arrays: arrays});
+    this.initData();
   },
 
   /**

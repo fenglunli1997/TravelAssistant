@@ -1,6 +1,6 @@
 .item{
-  margin-top: 18px;
-  margin-bottom: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
 }
@@ -11,17 +11,15 @@
   align-self: center;
 }
 .name{
-  width: 60%;
+  /* width: 60%; */
   margin-left: 10px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
-  align-self: center;
+  /* align-self: center; */
 }
 .type{
   color: gray;
   font-size: 15px;
-  position: absolute;
-  right: 70px;
   align-self: center;
 }
 .price{

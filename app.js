@@ -10,9 +10,23 @@ App({
           key: 'town',
           data: res.data,
         })
-        // that.globalData.town = res.data;
       }
     });
+    wx.request({
+      url: that.globalData.url_q + 'City',
+      method: 'GET',
+      success: function (res) {
+        wx.setStorage({
+          key: 'cities',
+          data: res.data,
+        })
+        // console.log(res.data);
+      }
+    });
+    // wx.setStorage({
+    //   key: 'cityConfig',
+    //   data: 'item.toId<14',
+    // })
   },
 
   onLaunch: function () {
@@ -62,13 +76,17 @@ App({
   },
   globalData: {
     userInfo: null,
-    city: '杭州',//自定义
+    // city: '杭州',//自定义
     url: 'http://192.168.137.1:8080/TAServer2_war_exploded/',
     url_q: 'http://192.168.137.1:8080/TAServer2_war_exploded/QueryServlet?table=',
+    // url: 'https://www.fei149547.com/TAServer2_war_exploded/',
+    // url_q: 'https://www.fei149547.com/TAServer2_war_exploded/QueryServlet?table=',
     // url_q: App.globalData.url + 'http://192.168.137.1:8080/TAServer2_war_exploded/QueryServlet?table=',
     // city_option: 'WHERE CiId =',
     town: [],
     city: { ciId: 1, ciName: "杭州", prId: 1 },
     province: { prId: 1, prName: "浙江" },
+    cities: [],
+    // city_option: ''
   }
 })

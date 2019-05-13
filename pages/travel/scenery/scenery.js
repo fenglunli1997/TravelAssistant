@@ -1,9 +1,9 @@
 Page({
   data: {
     id: 0,
-    score: 0,
-    arrays: [],
-    place: '西湖',
+    scenery: {},
+    recommend: [],
+    index: 0,
     weather: '小雨',
     tempereture: '7~12',
     attention: '杭州多雨，记得带伞',
@@ -13,7 +13,7 @@ Page({
     diary_name: '夜游西湖',
     seeMore: true,
     diarys: [],
-
+    img: '',
   },
 
   likeButton: function(){
@@ -64,35 +64,23 @@ Page({
   },
 
   initData: function () {
-    var arrays = [];
-    var src = '/img/travel/';
-
-    var obj0 = new Object();
-    obj0.img = src + 'hz-xh1.jpg';
-    obj0.name = '西湖';
-    arrays[0] = obj0;
-
-    var obj1 = new Object();
-    obj1.img = src + 'hz-xh1.jpg';
-    obj1.name = '西溪湿地';
-    arrays[1] = obj1;
-
-    var obj2 = new Object();
-    obj2.img = src + 'hz-xh1.jpg';
-    obj2.name = '千岛湖';
-    arrays[2] = obj2;
-
-    var obj3 = new Object();
-    obj3.img = src + 'hz-xh1.jpg';
-    obj3.name = '宋城千古情';
-    arrays[3] = obj3;
-
-    var obj4 = new Object();
-    obj4.img = src + 'hz-xh1.jpg';
-    obj4.name = '南宋御街';
-    arrays[4] = obj4;
-
-    return arrays;
+    this.setData({ diarys: this.initDiarys() });
+    var that = this;
+    wx.getStorage({
+      key: 'scenery',
+      success: function(res) {
+        that.setData({ scenery: res.data});
+        wx.request({
+          url: getApp().globalData.url_q + "Spot WHERE ScId=" + that.data.id,
+          success: function(res){
+            that.setData({
+              recommend: res.data,
+            });
+            console.log(that.data.recommend);
+          }
+        });
+      },
+    });
   },
 
   goDetails: function(){
@@ -107,17 +95,15 @@ Page({
   },
 
   onLoad: function (options) {
-    var arrays = this.initData();
-    var d = this.initDiarys();
-    this.setData({
-      id: options.id,
-      place: options.name,
-      likeSum: options.id,//
-      score: options.score,
-      arrays: arrays,
-      diarys: d
-    });
-    wx.setNavigationBarTitle({ title: options.name });
-  }
+    this.setData({ id: options.id })
+    console.log(options);
+    this.initData();
+    var b = getApp().globalData.url + 'img/Scenery/' + this.data.id + '/';
+    this.setData({ img: b});
+  },
+
+  onReady: function () {
+    wx.setNavigationBarTitle({ title: this.data.scenery.scName });
+  },
   
 })

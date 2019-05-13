@@ -1,31 +1,41 @@
-<swiper indicator-dots autoplay style='width:100%;'>
-  <!-- <block> -->
-    <swiper-item><image src='/img/travel/hz-xh1.jpg' mode='aspectFill' style='width:100%'/></swiper-item>
-    <swiper-item><image src='/icon/hotel.png' mode='aspectFill' style='width:100%'/></swiper-item>
-    <swiper-item><image src='/icon/travel.png' mode='aspectFill' style='width:100%'/></swiper-item>
-  <!-- </block> -->
-</swiper>
+<image src='{{img}}0.jpeg' mode='aspectFill' style='width:100%'/>
 
 <view class='weather'>
-  <view class='place'>{{place}}</view>
-  <!-- <include src='/include/star.wxml' /> -->
-  <import src="/include/star_template.wxml"/>
-  <template is="star_template" data="{{x:(score==undefined?'暂无评':score)}}"/>
+  <view class='place'>{{scenery.scName}}</view>
+  <!-- <import src="/include/star_template.wxml"/>
+  <template is="star_template" data="{{x:(score==undefined?'暂无评':score)}}"/> -->
   <view class='tempereture'>{{weather}}{{tempereture}}℃</view>
 </view>
 
 <view class='like'>
-  <text style='font-size:14px'>{{likeSum}}</text>
-  <image src='/icon/like{{likeState?"_red":""}}.png' class='lfButton' bindtap='likeButton'/>
+  <!-- <text style='font-size:14px'>{{likeSum}}</text> -->
+  <!-- <image src='/icon/like{{likeState?"_red":""}}.png' class='lfButton' bindtap='likeButton'/> -->
   <image src='/icon/fav{{favState?"_golden":""}}.png' class='lfButton' bindtap='favButton'/>
 </view>
 
+<view class='title'>路程信息</view>
+<view class='introduce' style='margin-left: 5px'>
+  <image src='/icon/locate.png' mode='aspectFit' class='locate'/>
+  <view>
+    <view class='location'>{{scenery.scAddress}}</view>
+    <view class='count'>{{scenery.scTraffic==null?"":scenery.scTraffic}}</view>
+  </view>
+</view>
 
 <view class='title'>精彩游记</view>
 <include src='/include/diary.wxml' />
 
 <view class='title'>必去景点</view>
-<include src='/include/recommend.wxml' />
+<swiper display-multiple-items='4' style='height: 100px'>
+  <block wx:for="{{recommend}}">
+    <view style='margin-left: 5px;max-width: 80px;display: flex;flex-direction: row;float: left;'>
+      <swiper-item>
+        <image src='{{img+index}}.jpeg' mode='aspectFit' style='max-height: 80px;max-width: 80px;'/>
+        <view style='max-width: 80px;text-align: center;font-size: 12px;'>{{item.spName}}</view>
+      </swiper-item>
+    </view>
+  </block>
+</swiper>
 
-<view class='title'>注意事项</view>
-<view class='attention'>{{attention}}</view>
+<view class='title'>景点介绍</view>
+<view class='attention'>{{scenery.scAttention}}</view>

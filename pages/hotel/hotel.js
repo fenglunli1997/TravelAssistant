@@ -8,6 +8,7 @@ Page({
     bar_width: '25%',
     // sum: 2,
     change_city: true,
+    url: ''
   },
 
   changeCity: function () {
@@ -30,6 +31,7 @@ Page({
         console.log(res)
       }
     });
+    this.setData({ url: getApp().globalData.url + 'img/Hotel/'});
   },
 
   choose(e) {

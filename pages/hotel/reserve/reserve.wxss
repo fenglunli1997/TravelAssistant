@@ -51,7 +51,7 @@
   flex-direction: row;
 }
 .day{
-  width: 40%;
+  width: 70%;
 }
 .array{
   position: absolute;

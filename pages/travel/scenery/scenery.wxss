@@ -22,6 +22,31 @@
   font-weight: bold;
   margin-top: 5px;
 }
+.introduce{
+  margin-top: 5px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.locate{
+  align-self: center;
+  max-width: 20px;
+  max-height: 20px;
+  margin-right: 5px;
+}
+.location{
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 12px;
+}
+.count{
+  display: flex;
+  flex-direction: row;
+  font-size: 10px;
+  color: #999999;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
 .title{
   font-weight: bold;
   font-size: 20px;
@@ -38,5 +63,5 @@
   margin-left: 10px;
   margin-bottom: 10px;
   font-size: 12px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }

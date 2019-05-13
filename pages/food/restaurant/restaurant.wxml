@@ -1,11 +1,4 @@
-<!-- <image src='/img/travel/hz-xh1.jpg' mode='aspectFit' style='width: 100%;'/> -->
-<swiper indicator-dots autoplay style='width:100%;'>
-  <block wx:for="{{imgs}}">
-    <swiper-item>
-      <image src='{{item}}.jpg' mode='aspectFit' style='width:100%' binderror='shown'/>
-    </swiper-item>
-  </block>
-</swiper>
+<include src='/include/img_swiper.wxml'/>
 
 <view class='introduce'>
   <view>
@@ -19,6 +12,7 @@
   </view>
   <image src='/icon/phone.png' mode='aspectFit' class='phone' bindtap='call'/>
 </view>
+
 <view class='introduce' style='margin-left: 5px'>
   <image src='/icon/locate.png' mode='aspectFit' class='locate'/>
   <view>

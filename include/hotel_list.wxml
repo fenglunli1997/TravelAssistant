@@ -2,7 +2,7 @@
 <!-- <swiper-item> -->
   <block wx:for="{{hotels}}">
     <view class='item' bindtap='goReserve' data-id='{{item.hoId}}' wx:if="{{type==0||item.hoType+1==type}}">
-      <image src='{{item.img}}' mode='aspectFit' class='picture'/>
+      <image src='{{url}}{{item.hoId}}/0.jpg' mode='aspectFit' class='picture'/>
       <view>
         <view class='name'>{{item.hoName}}</view>
         <view class='count'>

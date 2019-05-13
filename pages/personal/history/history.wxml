@@ -1,8 +1,11 @@
-<block wx:for="{{arrays}}">
+<!-- [{"orId":1,"resId":7,"userId":1,"orTime":{"date":13,"day":1,"hours":0,"minutes":0,"month":4,"seconds":0,"time":1557676800000,"timezoneOffset":-480,"year":119},"orReservePrice":45,"orRoomName":"男生6人床位房(独卫)","orHotelName":"黑甜青年旅舍"},{"orId":2,"resId":6,"userId":1,"orTime":{"date":13,"day":1,"hours":0,"minutes":0,"month":4,"seconds":0,"time":1557676800000,"timezoneOffset":-480,"year":119},"orReservePrice":40,"orRoomName":"8人间床位","orHotelName":"黑甜青年旅舍"}] -->
+<block wx:for="{{orders}}">
   <view class='item'>
-    <text class='time'>{{item.date}}</text>
-    <text class='name'>{{item.city}}-{{item.name}}</text>
-    <text class='type'>{{item.type}}</text>
-    <text class='price'>￥{{item.price}}</text>
+    <view class='time'>{{item.orTime.month+1}}-{{item.orTime.date}}</view>
+    <view style=''>
+      <view class='name'>{{cities[item.orCityId-1].ciName}}-{{item.orHotelName}}</view>
+      <view class='type'>{{item.orRoomName}}</view>
+    </view>
+    <view class='price'>￥{{item.orReservePrice}}</view>
   </view>
 </block>

@@ -1,4 +1,5 @@
-<image src='/img/travel/hz-xh1.jpg' mode='aspectFit' style='width: 100%;'/>
+<include src='/include/img_swiper.wxml'/>
+
 <view class='introduce'>
   <view>
     <view style='display:flex;flex-direction:row;'>
@@ -25,28 +26,39 @@
   </view>
 </view>
 
-<view class='pick' style='margin: 10px' bindtap='chooseTime'>
-  <view class='day'>
-    <view class='count'>今天入住</view>
+<view class='pick' style='margin: 10px'>
+
+  <picker mode="date" value='{{date}}' start="2019-06-08" end="2019-09-08" class='day' bindchange='changeFromDay'>
+    <view class='count'>入住日期</view>
     <view style='display:flex;flex-direction:row;'>
-      <view>3月1号</view>
-      <text class='count' style='color: black; align-self: center; margin-left: 3px'>周五</text>
+      <view>{{date}}</view>
+      <!-- <text class='count' style='color: black; align-self: center; margin-left: 3px'>周五</text> -->
     </view>
-  </view>
-  <view class='day'>
-    <view class='count'>明天离开</view>
+  </picker>
+
+  <!-- <picker mode="date" value='{{date2}}' start="2019-06-09" end="2019-09-09" class='day' bindchange='changeToDay'>
+    <view class='count'>离开日期</view>
     <view style='display:flex;flex-direction:row;'>
-      <view>3月2号</view>
-      <text class='count' style='color: black; align-self: center; margin-left: 3px'>周六</text>
+      <view>{{date2}}</view>
     </view>
-  </view>
-  <view class='count' style='color: black; align-self: center;'>共1晚</view>
+  </picker> -->
+
+  <picker mode="selector" value='{{length}}' range='{{date_length}}' bindchange='changeLength'  style='color: black; align-self: center; height:100%;'>
+    <view class='count' style='font-size:15px;'>共{{date_length[length]}}晚</view>
+    <!-- <view class='count'>入住日期</view>
+    <view style='display:flex;flex-direction:row;'>
+      <view>{{date1}}</view>
+    </view> -->
+  </picker>
+
+  <!-- <view class='count' style='color: black; align-self: center;'>共{{sum}}晚</view> -->
   <image src='/icon/array.png' mode='aspectFit' class='array'/>
+
 </view>
 
 <block wx:for="{{room}}">
   <view class='item'>
-    <image src='{{item.img}}' mode='aspectFit' class='picture'/>
+    <image src='{{img+(index+1)}}.jpg' mode='aspectFit' class='picture'/>
     <view>
       <view class='name'>{{item.roName}}</view>
       <view class='count'>
@@ -54,10 +66,10 @@
         <view style='margin-left: 10px'>{{item.roTag%10==1?"含":"无"}}早餐</view>
         <view style='margin-left: 6px'>{{item.roTag>9?"有":"无"}}窗</view>
       </view>
-      <view class='price'>￥{{item.roPrice}}</view>
+      <view class='price'>￥{{item.roPrice*date_length[length]}}</view>
     </view>
     <view style='align-self: center;position: absolute; right: 15px;'>
-      <button bindtap='goOrder'>预订</button>
+      <button bindtap='goOrder' data-index='{{index}}' data-id='{{item.roId}}'>预订</button>
       <view class='surplus'>仅剩2间</view>
     </view>
   </view>

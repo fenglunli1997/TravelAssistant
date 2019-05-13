@@ -20,7 +20,3 @@
   <text>关于旅行先知</text>
   <image src='/icon/array.png' mode='aspectFit' class='array'/>
 </navigator>
-<navigator class='title' url='test/test' open-type='navigate' hover-class='none'>
-  <text>测试部分在这里</text>
-  <image src='/icon/array.png' mode='aspectFit' class='array'/>
-</navigator>

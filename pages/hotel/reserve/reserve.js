@@ -1,12 +1,36 @@
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    imgs: [],
     hotel: {},
     room: [],
     favStatus: false,
+    img: '',
+    date: '2019-06-08',
+    length: 0,
+    date_length: [1,2,3,4,5,6,7],
+  },
+
+  goOrder: function(e){
+    var index = parseInt(e.currentTarget.dataset.index);
+    var id = parseInt(e.currentTarget.dataset.id);
+    var price = parseInt(this.data.room[index].roPrice) * parseInt(this.data.date_length[this.data.length]);
+    var a = getApp().globalData.url + 'ReserveServlet?userId=' + 1 + '&price=' + price + '&roId=' + id;
+    wx.request({
+      url: a,
+      success: function(){
+        wx.showToast({
+          title: '预订成功！',
+        })
+      }
+    })
+  },
+
+  changeFromDay: function (e) {
+    this.setData({ date: e.detail.value });
+  },
+
+  changeLength: function(e){
+    this.setData({ length: e.detail.value });
   },
 
   favButton: function(){
@@ -19,10 +43,6 @@ Page({
     wx.makePhoneCall({
       phoneNumber: this.data.hotel.hoPhone,
     })
-  },
-
-  chooseTime: function(){
-    ;
   },
 
   /**
@@ -41,9 +61,16 @@ Page({
           success: function (res) {
             that.setData({ room: res.data });
           }
-        })
+        });
+        var url = getApp().globalData.url + 'img/Hotel/' + that.data.hotel.hoId + '/';
+        var imgs = [url + 0, url + 1, url + 2, url + 3, url + 4];
+        var b = getApp().globalData.url + 'img/Hotel/' + that.data.hotel.hoId + '/' + that.data.hotel.hoId + '_';
+        that.setData({
+          imgs: imgs,
+          img: b
+        });
       }
-    }); 
+    });
   },
 
   /**
