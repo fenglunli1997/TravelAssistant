@@ -6,7 +6,8 @@ Page({
     tag: ['家人聚餐', '快餐', '饮品', '其它'],
     town: [],
     score: 'item.reScore',
-    url: ''
+    url: '',
+    ciId: 0,
   },
 
   changeCity: function () {
@@ -33,6 +34,12 @@ Page({
         that.setData({ restaurants: res.data });
       },
     });
+    wx.getStorage({
+      key: 'town',
+      success: function (res) {
+        that.setData({ town: res.data });
+      },
+    })
     var type = [];
     type[0] = '其它';
     type[1] = '江浙菜';
@@ -48,14 +55,8 @@ Page({
     type[23] = '烤肉';
     type[24] = '牛排';
     type[30] = '自助';
-    var that = this;
-    wx.getStorage({
-      key: 'town',
-      success: function(res) {
-        that.setData({ town: res.data});
-      },
-    })
     this.setData({
+      ciId: getApp().globalData.city.ciId,
       type: type,
       url: getApp().globalData.url + 'img/Restaurant/'
     });
@@ -65,22 +66,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initData();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
+    // if (options)
+    //   wx.setNavigationBarTitle({
+    //     title: options.name
+    //   })
+    // else
+    //   wx.setNavigationBarTitle({
+    //     title: getApp().globalData.city
+    //   });
+    // this.setData({ change_city: true });
+    this.initData();
+    this.setData({ change_city: true });
     if (options)
       wx.setNavigationBarTitle({
         title: options.name
       })
     else
       wx.setNavigationBarTitle({
-        title: getApp().globalData.city
-      });
-    this.setData({ change_city: true });
+        title: getApp().globalData.city.ciName
+      })
   },
 
   /**

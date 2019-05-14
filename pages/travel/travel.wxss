@@ -1,4 +1,17 @@
 /* pages/Travel/Travel.wxss */
+.weather_bar{
+  background-color: lightblue;
+  width: 100%;
+  height:auto;
+}
+.weather_intro{
+  font-size:12px;
+  font-weight: bold;
+}
+.weather{
+  font-size: 10px;
+  color: gray;
+}
 .item{
   display: flex;
   width: 100%;

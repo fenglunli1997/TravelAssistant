@@ -8,7 +8,9 @@ Page({
     bar_width: '25%',
     // sum: 2,
     change_city: true,
-    url: ''
+    url: '',
+    ciId: 0,
+    town: [],
   },
 
   changeCity: function () {
@@ -19,6 +21,12 @@ Page({
 
   initData: function () {
     var that = this;
+    wx.getStorage({
+      key: 'towns',
+      success: function (res) {
+        that.setData({ town: res.data });
+      },
+    });
     wx.request({
       url: getApp().globalData.url_q + 'Hotel', header: {
         'content-type': 'Application/json'
@@ -31,7 +39,10 @@ Page({
         console.log(res)
       }
     });
-    this.setData({ url: getApp().globalData.url + 'img/Hotel/'});
+    this.setData({
+      url: getApp().globalData.url + 'img/Hotel/',
+      ciId: getApp().globalData.city.ciId,
+    });
   },
 
   choose(e) {
@@ -75,13 +86,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initData();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function (options) {
+    this.initData();
     this.setData({ change_city: true });
     if (options)
       wx.setNavigationBarTitle({
@@ -89,7 +100,7 @@ Page({
       })
     else
       wx.setNavigationBarTitle({
-        title: getApp().globalData.city
+        title: getApp().globalData.city.ciName
       })
   },
 

@@ -3,9 +3,30 @@ Page({
     change_city: true,
     scenerys: [],
     url: '',
-    town: [],
-    // cityC: ''
+    towns: [],
+    cities: [],
+    ciId: 0,
+    weathers: [],
+    dressing: '',
   },
+  // testWeather: function(){
+  //   var that = this;
+  //   var cityName = this.data.cities[this.data.ciId-1].ciName;
+  //   wx.request({
+  //     url: 'http://v.juhe.cn/weather/index?format=2&cityname=' + cityName +'&key=5c402dc09b6cfe2076e89389dc5987d5',
+  //     header: {
+  //       'content-type': 'Application/json'
+  //     },
+  //     method: 'GET',
+  //     success: function (res) {
+  //       console.log(res);
+  //       that.setData({
+  //         weathers: res.data.result.future,
+  //         dressing: res.data.result.today.dressing_advice,
+  //       });
+  //     },
+  //   })
+  // },
 
   changeCity: function(){
     wx.navigateTo({
@@ -27,17 +48,23 @@ Page({
 
   initData: function () {
     this.setData({
-      url: getApp().globalData.url + 'img/Scenery/',
-      // cityC: wx.getStorageSync('cityConfig')
+      ciId: getApp().globalData.city.ciId,
+      url: getApp().globalData.url + 'img/Scenery/'
     });
-    console.log(this.data.cityC);
-    wx.getStorage({
-      key: 'town',
-      success: function (res) {
-        that.setData({ town: res.data });
-      },
-    })
     var that = this;
+    wx.getStorage({
+      key: 'towns',
+      success: function (res) {
+        that.setData({ towns: res.data });
+      },
+    });
+    wx.getStorage({
+      key: 'cities',
+      success: function (res) {
+        that.setData({ cities: res.data });
+        that.testWeather();
+      },
+    });
     wx.request({
       url: getApp().globalData.url_q + 'Scenery',
       header: {
@@ -54,7 +81,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initData();
+    // this.testWeather();
   },
 
   /**
@@ -69,6 +96,7 @@ Page({
    */
   onShow: function (options) {
     this.setData({ change_city: true });
+    this.initData();
     if (options)
       wx.setNavigationBarTitle({
         title: options.name
@@ -76,7 +104,7 @@ Page({
     else
       wx.setNavigationBarTitle({
         title: getApp().globalData.city.ciName
-      })
+      });
   },
 
   /**

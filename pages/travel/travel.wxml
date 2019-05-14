@@ -1,20 +1,41 @@
-<include src='/include/change_city.wxml' />
+<include src='/include/change_city.wxml'/>
+
+<view style='width:100%;'>
+  <view style='font-size:15px;text-align=center'>{{cities[ciId-1].ciName}}市未来天气</view>
+</view>
+<swiper display-multiple-items='3'>
+  <block wx:for="{{weathers}}">
+    <swiper-item>
+      <view style='width:100%;'>
+        <view class='weather_intro'>{{weathers[index].date%10000/100}}</view>
+        <view class='weather'>{{weathers[index].temperature}}</view>
+        <view class='weather'>{{weathers[index].weather}}</view>
+        <view class='weather'>{{weathers[index].wind}}</view>
+      </view>
+    </swiper-item>
+  </block>
+</swiper>
+<view style='margin-left:5px; top:10px; margin-bottom:5px;font-size:12px;'>{{dressing}}</view>
 
 <block wx:for="{{scenerys}}">
-  <block wx:if="{{item.toId<14}}">
+  <block wx:if="{{towns[item.toId].ciId==ciId}}">
     <view class='item' bindtap='goSecenery' data-id='{{item.scId}}'>
       <image src='{{url}}{{item.scId}}/0.jpeg' mode='aspectFit' class='picture'/>
       <view style='margin-left:5px;'>
           <view class='name'>{{item.scName}}</view>
-          <!-- <import src="/include/star_template.wxml"/> -->
-          <!-- <template is="star_template" data="{{x:(item.scScore==undefined?'暂无评':item.score)}}"/> -->
-          <view class='count' style='margin-bottom:10px;'>{{town[item.toId-1].toName}}</view>
-          <view class='count'>{{item.scTicket==0?"免费":"门票￥"+item.scTicket}}</view>
+
+          <import src="/include/star_template.wxml"/>
+          <template is="star_template" data="{{x:(item.scScore==undefined?'暂无评':item.score)}}"/>
+
+          <view class='count' style='margin-bottom:2px;float:left'>{{towns[item.toId-1].toName}}</view>
+          <view class='count' style='position:relative;left:20px'>{{item.scTicket==0?"免费":"门票￥"+item.scTicket}}</view>
       </view>
       <view>
       </view>
       <image src='/icon/array.png' mode='aspectFit' class='array'/>
     </view>
-    <view style='margin-left:5px;margin-right:5px;'><view class='intro'>{{item.scAttention}}</view></view>
+    <view style='margin-left:5px;margin-right:5px;' bindtap='goSecenery'>
+      <view class='intro'>{{item.scAttention}}</view>
+    </view>
   </block>
 </block>

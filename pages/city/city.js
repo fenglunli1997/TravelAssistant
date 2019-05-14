@@ -1,8 +1,4 @@
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     prov_selected: 0,
     city_selected: 0,
@@ -15,11 +11,11 @@ Page({
   initData(){
     var app = getApp();
     var that = this;
-    wx.request({
-      url: app.globalData.url_q + 'Province',
-      success: function(res){
-        that.setData({ provinces: res.data});
-      }
+    wx.getStorage({
+      key: 'provinces',
+      success: function(res) {
+        that.setData({provinces: res.data });
+      },
     });
     this.setCity();
     this.setData({

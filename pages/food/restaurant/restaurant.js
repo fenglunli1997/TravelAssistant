@@ -34,37 +34,37 @@ Page({
       this.setData({ likeSum: this.data.likeSum - 1 });
   },
 
-  initFood: function () {
-    var arrays = [];
-    var src = '/img/travel/';
+  // initFood: function () {
+  //   var arrays = [];
+  //   var src = '/img/travel/';
 
-    var obj0 = new Object();
-    obj0.img = src + 'hz-xh1.jpg';
-    obj0.name = '东坡肉';
-    arrays[0] = obj0;
+  //   var obj0 = new Object();
+  //   obj0.img = src + 'hz-xh1.jpg';
+  //   obj0.name = '东坡肉';
+  //   arrays[0] = obj0;
 
-    var obj1 = new Object();
-    obj1.img = src + 'hz-xh1.jpg';
-    obj1.name = '西施豆腐';
-    arrays[1] = obj1;
+  //   var obj1 = new Object();
+  //   obj1.img = src + 'hz-xh1.jpg';
+  //   obj1.name = '西施豆腐';
+  //   arrays[1] = obj1;
 
-    var obj2 = new Object();
-    obj2.img = src + 'hz-xh1.jpg';
-    obj2.name = '西湖醋鱼';
-    arrays[2] = obj2;
+  //   var obj2 = new Object();
+  //   obj2.img = src + 'hz-xh1.jpg';
+  //   obj2.name = '西湖醋鱼';
+  //   arrays[2] = obj2;
 
-    var obj3 = new Object();
-    obj3.img = src + 'hz-xh1.jpg';
-    obj3.name = '莲子羹';
-    arrays[3] = obj3;
+  //   var obj3 = new Object();
+  //   obj3.img = src + 'hz-xh1.jpg';
+  //   obj3.name = '莲子羹';
+  //   arrays[3] = obj3;
 
-    var obj4 = new Object();
-    obj4.img = src + 'hz-xh1.jpg';
-    obj4.name = '糖醋排骨';
-    arrays[4] = obj4;
+  //   var obj4 = new Object();
+  //   obj4.img = src + 'hz-xh1.jpg';
+  //   obj4.name = '糖醋排骨';
+  //   arrays[4] = obj4;
 
-    return arrays;
-  },
+  //   return arrays;
+  // },
 
   commentLikeButton: function (e) {
     var id = e.currentTarget.dataset.comment_id;
@@ -168,7 +168,7 @@ Page({
    */
   onReady: function () {
     wx.setNavigationBarTitle({
-      title: this.data.name,
+      title: this.data.restaurant.reName
     })
   },
 

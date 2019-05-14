@@ -10,7 +10,7 @@
 </swiper> -->
 
 <block wx:for="{{fav}}">
-  <view class='item' wx:if="{{type==0||item.faType==type}}">
+  <view class='item' wx:if="{{type==0||item.faType==type}}" bindtap='goDetails' data-no='{{item.faIndex}}'>
     <!-- <image class='img' mode='aspectFit' src='{{item.img}}'/> -->
     <text class='journey'>{{item.faCityName}} - {{item.faName}}</text>
     <text class='type'>{{title[item.faType]}}</text>

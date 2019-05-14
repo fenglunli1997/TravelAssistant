@@ -10,20 +10,22 @@
 
 <!-- <image src='/icon/search.png' class='search' bindtap='search'/> -->
 <block wx:for="{{hotels}}">
-  <view class='item' bindtap='goReserve' data-id='{{item.hoId}}' wx:if="{{type==0||item.hoType+1==type}}">
-    <image src='{{url}}{{item.hoId}}/0.jpg' mode='aspectFit' class='picture'/>
-    <view>
-      <view class='name'>{{item.hoName}}</view>
-      <view class='count'>
-        <import src="/include/star_template.wxml"/>
-        <template is="star_template" data="{{x:(item.hoScore==undefined?'暂无评':item.hoScore)}}"/>
-        <view style='position: relative;left: 30px'>{{item.distance}}</view>
+  <block wx:if="{{town[item.toId].ciId==ciId}}">
+    <view class='item' bindtap='goReserve' data-id='{{item.hoId}}' wx:if="{{type==0||item.hoType+1==type}}">
+      <image src='{{url}}{{item.hoId}}/0.jpg' mode='aspectFit' class='picture'/>
+      <view>
+        <view class='name'>{{item.hoName}}</view>
+        <view class='count'>
+          <import src="/include/star_template.wxml"/>
+          <template is="star_template" data="{{x:(item.hoScore==undefined?'暂无评':item.hoScore)}}"/>
+          <view style='position: relative;left: 30px'>{{item.distance}}</view>
+        </view>
+        <view class='count'>{{item.hoStreet}}</view>
+        <import src="/include/hotel_tag.wxml"/>
+        <template is='hotel_tag' data="{{x:item.hoTag}}"/>
       </view>
-      <view class='count'>{{item.hoStreet}}</view>
-      <import src="/include/hotel_tag.wxml"/>
-      <template is='hotel_tag' data="{{x:item.hoTag}}"/>
+      <view class='priceTag'>￥<text class='price'>{{item.hoPrice}}</text>起</view>
+      <image src='/icon/array.png' class='array'/>
     </view>
-    <view class='priceTag'>￥<text class='price'>{{item.hoPrice}}</text>起</view>
-    <image src='/icon/array.png' class='array'/>
-  </view>
+  </block>
 </block>

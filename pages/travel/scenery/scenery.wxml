@@ -5,6 +5,10 @@
   <!-- <import src="/include/star_template.wxml"/>
   <template is="star_template" data="{{x:(score==undefined?'暂无评':score)}}"/> -->
   <view class='tempereture'>{{weather}}{{tempereture}}℃</view>
+
+  <navigator class="gopage" url="plugin://marmot/index?date=1543832981891&city=北京">进入插件首页</navigator>
+  <!-- <navigator class="gopage" url="plugin://marmot/chat">进入对话页</navigator> -->
+  
 </view>
 
 <view class='like'>
