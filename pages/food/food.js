@@ -35,7 +35,7 @@ Page({
       },
     });
     wx.getStorage({
-      key: 'town',
+      key: 'towns',
       success: function (res) {
         that.setData({ town: res.data });
       },

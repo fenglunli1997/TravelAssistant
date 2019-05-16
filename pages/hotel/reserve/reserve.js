@@ -54,6 +54,15 @@ Page({
       key: 'hotel',
       success: function (res) {
         that.setData({ hotel: res.data });
+        console.log(getApp().globalData.url_f + '3&id=' + this.data.hotel.hoId);//hotel没定义，太早了！
+    // wx.request({
+    //   url: getApp().globalData.url_f + '3&id=' + that.data.hotel.hoId,
+    //   header: { 'content-type': 'Application/json' },
+    //   method: 'GET',
+    //   success: function(res){
+    //     console.log(res);
+    //   }
+    // });
       },
       complete: function(){
         wx.request({

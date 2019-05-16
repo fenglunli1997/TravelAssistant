@@ -4,10 +4,7 @@
   <view class='place'>{{scenery.scName}}</view>
   <!-- <import src="/include/star_template.wxml"/>
   <template is="star_template" data="{{x:(score==undefined?'暂无评':score)}}"/> -->
-  <view class='tempereture'>{{weather}}{{tempereture}}℃</view>
-
-  <navigator class="gopage" url="plugin://marmot/index?date=1543832981891&city=北京">进入插件首页</navigator>
-  <!-- <navigator class="gopage" url="plugin://marmot/chat">进入对话页</navigator> -->
+  <!-- <view class='tempereture'>{{weather}}{{tempereture}}℃</view> -->
   
 </view>
 
@@ -17,7 +14,7 @@
   <image src='/icon/fav{{favState?"_golden":""}}.png' class='lfButton' bindtap='favButton'/>
 </view>
 
-<view class='title'>路程信息</view>
+<view class='title'>路线信息</view>
 <view class='introduce' style='margin-left: 5px'>
   <image src='/icon/locate.png' mode='aspectFit' class='locate'/>
   <view>
@@ -26,8 +23,8 @@
   </view>
 </view>
 
-<view class='title'>精彩游记</view>
-<include src='/include/diary.wxml' />
+<!-- <view class='title'>精彩游记</view>
+<include src='/include/diary.wxml' /> -->
 
 <view class='title'>必去景点</view>
 <swiper display-multiple-items='4' style='height: 100px'>

@@ -11,6 +11,7 @@
 .weather{
   font-size: 10px;
   color: gray;
+  margin-top: 3px;
 }
 .item{
   display: flex;

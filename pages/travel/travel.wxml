@@ -1,13 +1,15 @@
 <include src='/include/change_city.wxml'/>
+<!-- <button open-type='getUserInfo'>点击授权</button> -->
 
 <view style='width:100%;'>
-  <view style='font-size:15px;text-align=center'>{{cities[ciId-1].ciName}}市未来天气</view>
+  <view style='font-size:15px;text-align=center'>{{cities[ciId-1].ciName}}市未来7天天气</view>
 </view>
-<swiper display-multiple-items='3'>
+
+<swiper display-multiple-items='3' style='height:55px'>
   <block wx:for="{{weathers}}">
     <swiper-item>
       <view style='width:100%;'>
-        <view class='weather_intro'>{{weathers[index].date%10000/100}}</view>
+        <view class='weather_intro'>{{weathers[index].week}}</view>
         <view class='weather'>{{weathers[index].temperature}}</view>
         <view class='weather'>{{weathers[index].weather}}</view>
         <view class='weather'>{{weathers[index].wind}}</view>
@@ -15,6 +17,7 @@
     </swiper-item>
   </block>
 </swiper>
+
 <view style='margin-left:5px; top:10px; margin-bottom:5px;font-size:12px;'>{{dressing}}</view>
 
 <block wx:for="{{scenerys}}">

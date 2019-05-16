@@ -1,8 +1,8 @@
 <view style='border:1px solid lightgray;'>
   <view style='display:flex; flex-direction:row; margin: 15px;'>
-    <image src='/icon/personal.png' mode='aspectFit' class='head'/>
+    <open-data type="userAvatarUrl" mode='aspectFit' class='head'></open-data>
     <view>
-      <view class='name'>说走就走</view>
+      <view class='name'><open-data type="userNickName"></open-data></view>
       <view class='place'>{{province}}省 {{city}}市</view>
     </view>
   </view>

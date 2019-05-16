@@ -69,10 +69,6 @@ Page({
     }
   },
 
-  // search: function(){
-  //   ;
-  // },
-
   goReserve: function(e){
     var id = parseInt(e.currentTarget.dataset.id)-1;
     wx.setStorage({

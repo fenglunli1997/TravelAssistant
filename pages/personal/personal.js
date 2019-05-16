@@ -1,6 +1,15 @@
 Page({
   data: {
-    province: '浙江',
-    city: '杭州',
+    user: {},
+    province: '',
+    city: '',
+  },
+
+  onLoad: function(){
+    var d = getApp().globalData;
+    this.setData({
+      province: d.province.prName,
+      city: d.city.ciName
+    })
   }
 })

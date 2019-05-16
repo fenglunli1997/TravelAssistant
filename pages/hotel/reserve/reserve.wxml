@@ -22,7 +22,7 @@
   <image src='/icon/locate.png' mode='aspectFit' class='locate'/>
   <view>
     <view class='location'>{{hotel.hoLocation}}</view>
-    <view class='count'>{{hotel.hoRoute}}</view>
+    <view class='count'>{{hotel.hoRoute==null?"":hotel.hoRoute}}</view>
   </view>
 </view>
 

@@ -9,14 +9,13 @@ Page({
     weathers: [],
     dressing: '',
   },
+
   // testWeather: function(){
   //   var that = this;
   //   var cityName = this.data.cities[this.data.ciId-1].ciName;
   //   wx.request({
   //     url: 'http://v.juhe.cn/weather/index?format=2&cityname=' + cityName +'&key=5c402dc09b6cfe2076e89389dc5987d5',
-  //     header: {
-  //       'content-type': 'Application/json'
-  //     },
+  //     header: {'content-type': 'Application/json'},
   //     method: 'GET',
   //     success: function (res) {
   //       console.log(res);
@@ -81,7 +80,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.testWeather();
+    this.testWeather();
   },
 
   /**
