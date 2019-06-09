@@ -1,5 +1,4 @@
-// pages/Traffic/Traffic.js
-// var QQMapWX = require('../../libs/qqmap-wx-jssdk1.0/qqmap-wx-jssdk.js');
+// var QQMapWX = require("/libs/qqmap-wx-jssdk1.0/qqmap-wx-jssdk.js");
 // var qqmapsdk;
 
 Page({
@@ -20,31 +19,14 @@ Page({
       height: 30,
       id: 1,
     }],
-
-    // polyline: [{
-    //   points: [{
-    //     latitude: 0,
-    //     longitude: 0,
-    //   }, {
-    //     latitude: 0,
-    //     longitude: 0,
-    //   }],
-    //   color: "#FF0000DD",
-    //   width: 2,
-    //   dottedLine: 'true',
-    // }],
-
-    // time_h: 2,
-    // time_min: 10,
-
   },
 
-  route: function(){
-    wx.openLocation({
-      latitude: this.data.markers[0].latitude,
-      longitude: this.data.markers[0].longitude,
-    })
-  },
+  // route: function(){
+  //   wx.openLocation({
+  //     latitude: this.data.markers[0].latitude,
+  //     longitude: this.data.markers[0].longitude,
+  //   })
+  // },
 
   locate: function(e){
     var that = this;
@@ -64,16 +46,31 @@ Page({
   },
 
   route: function(){
-    var a = "name0=" + this.data.name[0] + "&&la0=" + this.data.markers[0].latitude + "&&lo0=" + this.data.markers[0].longitude;
-    var b = "name1=" + this.data.name[1] + "&&la1=" + this.data.markers[1].latitude + "&&lo1=" + this.data.markers[1].longitude;
-    wx.navigateTo({
-      url: 'route/route?' + a + "&&" + b,
-    })
+    var routeInfo = {
+      'startLat': parseFloat(this.data.markers[0].latitude),    //起点纬度 选填
+      'startLng': parseFloat(this.data.markers[0].longitude),    //起点经度 选填
+      'startName': this.data.name[0],   // 起点名称 选填
+      'endLat': parseFloat(this.data.markers[1].latitude),    // 终点纬度必传
+      'endLng': parseFloat(this.data.markers[1].longitude),  //终点经度 必传
+      'endName': this.data.name[1],  //终点名称 必传
+      'mode': "car"  //算路方式 选填
+    };
+    wx.setStorage({
+      key: 'routeInfo',
+      data: routeInfo,
+      success: function(){
+        wx.navigateTo({
+          url: 'route/route',
+        });
+      }
+    });
+    
+    // var a = "name0=" + this.data.name[0] + "&&la0=" + this.data.markers[0].latitude + "&&lo0=" + this.data.markers[0].longitude;
+    // var b = "name1=" + this.data.name[1] + "&&la1=" + this.data.markers[1].latitude + "&&lo1=" + this.data.markers[1].longitude;
+    // wx.navigateTo({
+    //   url: 'route/route?' + a + "&&" + b,
+    // })
   },
-
-  // search: function(){
-  //   this.route();//
-  // },
 
   /**
    * 生命周期函数--监听页面加载
@@ -85,11 +82,13 @@ Page({
     //   key: '4INBZ-PRVRU-5WUVM-B5CDQ-FGXAS-DGBKA'
     // });
 
+    var a = 'markers[0].latitude';
+    var b = 'markers[0].longitude';
     wx.getLocation({
       success: (res) => {
         this.setData({
-          'markers[0].latitude': res.latitude,
-          'markers[0].longitude': res.longitude
+          [a]: res.latitude,
+          [b]: res.longitude
         });
       },
     });
@@ -105,21 +104,4 @@ Page({
     })
   },
 
-  // onShow: function () {
-  //   // 调用接口
-  //   qqmapsdk.search({
-  //     keyword: '酒店',
-  //     success: function (res) {
-  //       console.log(res);
-  //     },
-  //     fail: function (res) {
-  //       console.log(res);
-  //     },
-  //     complete: function (res) {
-  //       console.log(res);
-  //     }
-  //   });
-  // },
-  
-  
 })

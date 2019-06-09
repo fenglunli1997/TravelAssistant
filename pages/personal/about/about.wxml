@@ -1,7 +1,7 @@
-<image src='/icon/personal.png' mode='aspectFit'/>
+<image src='/icon/travel_blue.png' mode='aspectFit'/>
 <view style='text-align:center'>
   <view class='title'>旅行先知</view>
-  <view class='count'>版本：v1.0</view>
+  <view class='count'>版本：v2.3</view>
   <view class='count'>制作人：冯伦力</view>
   <view class='count'>邮箱：hdu_fll@126.com</view>
   <view class='count'>学号：15058208</view>

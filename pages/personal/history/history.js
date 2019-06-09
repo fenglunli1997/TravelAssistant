@@ -13,7 +13,7 @@ Page({
       },
     });
     wx.request({
-      url: getApp().globalData.url + 'OrdersServlet',
+      url: getApp().globalData.url + 'OrdersServlet?userId=' + wx.getStorageSync('sessionId'),
       header: {
         'content-type': 'Application/json'
       },

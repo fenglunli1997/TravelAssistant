@@ -55,10 +55,10 @@ App({
             success: function(res){
               that.globalData.isNewUser = res.data.isNewUser;
               that.globalData.userId = res.data.sessionId;
-              // wx.setStorage({
-              //   key: 'sessionId',
-              //   data: res.data.sessionId,
-              // });
+              wx.setStorage({
+                key: 'sessionId',
+                data: res.data.sessionId,
+              });
               console.log(res);
               console.log(that.globalData.userId);
               that.initData();
@@ -115,9 +115,10 @@ App({
   globalData: {
     userId: 0,
     userInfo: null,
-    url: 'http://192.168.137.1:8080/TAServer2_war_exploded/',
-    // url: 'https://www.fei149547.com/TAServer2_war_exploded/',
+    // url: 'http://192.168.137.1:8080/TAServer2_war_exploded/',
+    url: 'https://www.fei149547.com/TAServer2_war_exploded/',
     url_q: '',
+    // url_q: 'http://192.168.137.1:8080/TAServer2_war_exploded/QueryServlet?table=',
     url_f: '',
     city: { ciId: 1, ciName: "杭州", prId: 1 },//只是默认值
     province: { prId: 1, prName: "浙江" },

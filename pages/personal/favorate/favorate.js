@@ -1,10 +1,10 @@
 Page({
   data: {
-    title: ['全部', '景点', '餐厅', '酒店', '游记'],
-    color: ['blue', 'black', 'black', 'black', 'black'],
+    title: ['全部', '景点', '餐厅', '酒店'],
+    color: ['blue', 'black', 'black', 'black'],
     type: 0,
-    border: [1, 0, 0, 0, 0],
-    bar_width: '20%',
+    border: [1, 0, 0, 0],
+    bar_width: '25%',
     sum: 5,
     fav: [],
   },
@@ -49,10 +49,8 @@ Page({
   initData: function () {
     var that = this;
     wx.request({
-      url: getApp().globalData.url + 'FavServlet',
-      header: {
-        'content-type': 'Application/json'
-      },
+      url: getApp().globalData.url + 'FavServlet?userId=' + wx.getStorageSync('sessionId'),
+      header: {'content-type': 'Application/json'},
       method: 'GET',
       success: function(res){
         console.log(res);
@@ -75,7 +73,7 @@ Page({
       [ar]: 1,
       type: id
     });
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 4; i++) {
       if (i != id) {
         var a = 'color[' + i + ']';
         var b = 'border[' + i + ']';

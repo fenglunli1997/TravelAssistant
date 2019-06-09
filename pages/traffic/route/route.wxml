@@ -1,3 +1,2 @@
-<!--pages/traffic/route/route.wxml-->
-<!-- <text>pages/traffic/route/route.wxml</text> -->
-<map-route route-info="{{routeInfo}}" subkey="4INBZ-PRVRU-5WUVM-B5CDQ-FGXAS-DGBKA"></map-route>
+<!-- <map-route route-info="{{r}}" subkey="4INBZ-PRVRU-5WUVM-B5CDQ-FGXAS-DGBKA"></map-route> -->
+<map-route route-info="{{routeInfo}}"></map-route>

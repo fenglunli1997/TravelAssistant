@@ -1,5 +1,6 @@
 Page({
   data: {
+    id: 0,
     imgs: [],
     hotel: {},
     room: [],
@@ -34,9 +35,19 @@ Page({
   },
 
   favButton: function(){
-    this.setData({ favStatus: !this.data.favStatus });
-    if (this.data.favStatus)
-      wx.showToast({title: '收藏成功！',})
+    // this.setData({ favStatus: !this.data.favStatus });
+    // if (this.data.favStatus)
+    //   wx.showToast({title: '收藏成功！',})
+    this.setData({ favStatus: true });
+    var that = this;
+    wx.request({
+      url: getApp().globalData.url + 'FavNewServlet?type=3&id=' + that.data.id + '&userId=' + wx.getStorageSync('sessionId'),
+      success: function () {
+        wx.showToast({
+          title: '收藏成功！',
+        });
+      }
+    })
   },
 
   call: function(){
@@ -53,7 +64,10 @@ Page({
     wx.getStorage({
       key: 'hotel',
       success: function (res) {
-        that.setData({ hotel: res.data });
+        that.setData({
+          hotel: res.data,
+          id: res.data.hoId
+        });
         console.log(getApp().globalData.url_f + '3&id=' + this.data.hotel.hoId);//hotel没定义，太早了！
     // wx.request({
     //   url: getApp().globalData.url_f + '3&id=' + that.data.hotel.hoId,

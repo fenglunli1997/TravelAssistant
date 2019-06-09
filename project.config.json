@@ -13,7 +13,7 @@
 		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.5.0",
 	"appid": "wx97efe56b663b6a9d",
 	"projectname": "旅行先知",
 	"debugOptions": {

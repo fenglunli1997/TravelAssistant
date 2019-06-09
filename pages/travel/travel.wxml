@@ -5,7 +5,7 @@
   <view style='font-size:15px;text-align=center'>{{cities[ciId-1].ciName}}市未来7天天气</view>
 </view>
 
-<swiper display-multiple-items='3' style='height:55px'>
+<swiper display-multiple-items='3' style='height:70px'>
   <block wx:for="{{weathers}}">
     <swiper-item>
       <view style='width:100%;'>

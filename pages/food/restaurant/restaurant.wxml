@@ -2,7 +2,10 @@
 
 <view class='introduce'>
   <view>
-    <view class='name'>{{restaurant.reName}}</view>
+    <view style='display:flex;flex-direction:row;'>
+      <view class='name'>{{restaurant.reName}}</view>
+      <image src='/icon/fav{{favStatus?"_golden":""}}.png' mode='aspectFit' class='fav' bindtap='favButton'/>
+    </view>
     <view class='count'>
       <import src="/include/star_template.wxml"/>
       <template is="star_template" data="{{x:(restaurant.reScore==undefined?'暂无评':restaurant.reScore)}}"/>
@@ -22,5 +25,13 @@
 </view>
 
 <view style='margin-top: 10px;margin-left: 8px;font-weight: bold;font-size: 20px;margin-top: 5px;margin-bottom: 5px;'>推荐菜</view>
-<include src='/include/recommend.wxml' />
-<!-- <include src='/include/comment_list.wxml' /> -->
+<swiper display-multiple-items='4' style='height: 100px'>
+  <block wx:for="{{recommend}}">
+    <view style='margin-left: 5px;max-width: 80px;display: flex;flex-direction: row;float: left;'>
+      <swiper-item>
+        <image src='{{img}}_{{index+1}}.jpg' mode='aspectFit' style='max-height: 80px;max-width: 80px;'/>
+        <view style='max-width: 80px;text-align: center;font-size: 12px;'>{{item.foName}}</view>
+      </swiper-item>
+    </view>
+  </block>
+</swiper>

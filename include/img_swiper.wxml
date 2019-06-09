@@ -1,7 +1,7 @@
 <swiper indicator-dots autoplay style='width:100%;'>
   <block wx:for="{{imgs}}">
     <swiper-item>
-      <image src='{{item}}.jpg' mode='aspectFill' style='width:100%' binderror='shown'/>
+      <image src='{{item}}.jpg' mode='aspectFill' style='width:100%'/>
     </swiper-item>
   </block>
 </swiper>

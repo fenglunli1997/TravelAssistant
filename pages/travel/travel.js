@@ -10,22 +10,22 @@ Page({
     dressing: '',
   },
 
-  // testWeather: function(){
-  //   var that = this;
-  //   var cityName = this.data.cities[this.data.ciId-1].ciName;
-  //   wx.request({
-  //     url: 'http://v.juhe.cn/weather/index?format=2&cityname=' + cityName +'&key=5c402dc09b6cfe2076e89389dc5987d5',
-  //     header: {'content-type': 'Application/json'},
-  //     method: 'GET',
-  //     success: function (res) {
-  //       console.log(res);
-  //       that.setData({
-  //         weathers: res.data.result.future,
-  //         dressing: res.data.result.today.dressing_advice,
-  //       });
-  //     },
-  //   })
-  // },
+  testWeather: function(){
+    var that = this;
+    var cityName = this.data.cities[this.data.ciId-1].ciName;
+    wx.request({
+      url: 'https://v.juhe.cn/weather/index?format=2&cityname=' + cityName +'&key=5c402dc09b6cfe2076e89389dc5987d5',
+      header: {'content-type': 'Application/json'},
+      method: 'GET',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          weathers: res.data.result.future,
+          dressing: res.data.result.today.dressing_advice,
+        });
+      },
+    })
+  },
 
   changeCity: function(){
     wx.navigateTo({
@@ -46,6 +46,16 @@ Page({
   },
 
   initData: function () {
+    wx.request({
+      url: getApp().globalData.url + 'QueryServlet?table=Scenery',//
+      header: {
+        'content-type': 'Application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        that.setData({ scenerys: res.data });//
+      },
+    });
     this.setData({
       ciId: getApp().globalData.city.ciId,
       url: getApp().globalData.url + 'img/Scenery/'
@@ -64,23 +74,22 @@ Page({
         that.testWeather();
       },
     });
-    wx.request({
-      url: getApp().globalData.url_q + 'Scenery',
-      header: {
-        'content-type': 'Application/json'
-      },
-      method: 'GET',
-      success: function (res) {
-        that.setData({ scenerys: res.data });
-      },
-    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.testWeather();
+    this.setData({ change_city: true });
+    this.initData();
+    if (options)
+      wx.setNavigationBarTitle({
+        title: options.name
+      })
+    else
+      wx.setNavigationBarTitle({
+        title: getApp().globalData.city.ciName
+      });
   },
 
   /**
